@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+div::-webkit-scrollbar
+{
+    width: .5rem;
+    background-color: transparent;
+}
+
+div::-webkit-scrollbar-track
+{
+    background: theme("colors.transparent");
+}
+
+
+div::-webkit-scrollbar-thumb
+{
+    background-color: theme("colors.blue-gray.500");
+}
