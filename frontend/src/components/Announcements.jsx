@@ -12,8 +12,11 @@ const Announcements = () => {
                 <NewspaperIcon className="h-16 inline align-middle me-5 text-blue-gray-900"/>
                 Announcements
             </Typography>
-            <div className="px-4 sm:px-16 lg:grid lg:grid-flow-col lg:grid-cols-5 lg:gap-x-8 xl:gap-x-8 xl:w-5/6 xl:mx-auto">
-                <div className="overflow-y-auto h-674 mb-16 bg-white lg:mb-0 lg:col-span-2 mt-auto">
+            <div className="px-4 sm:px-16 lg:grid lg:grid-rows-1 lg:grid-cols-5 lg:gap-x-8 xl:gap-x-8 xl:w-5/6 xl:mx-auto">
+                <div className="row-start-1 row-end-1 col-start-3 col-end-6 mb-2">
+                    <Pagination />
+                </div>
+                <div className="overflow-y-auto h-674 mb-16 bg-white lg:mb-0 lg:col-span-2 row-start-2 row-end-3">
                     <Typography variant="h4" className="bg-white p-6 sticky top-0 z-50 shadow-sm">Pinned</Typography>
                     <PinnedAnnouncement />
                     <PinnedAnnouncement />
@@ -24,9 +27,9 @@ const Announcements = () => {
                     <PinnedAnnouncement />
                     {/* <NoResult /> */}
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-3 row-start-2 row-end-3">
                     <div className="flex flex-col gap-2">
-                        <Pagination className="mb-2"/>
+                        <Announcement />
                         <Announcement />
                         <Announcement />
                         <Announcement />
