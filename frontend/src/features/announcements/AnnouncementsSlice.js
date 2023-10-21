@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import announcementsData from "../../assets/data"
 
 const announcementsReducer = createSlice({
     name: "ann",
-    initialState: {pinned: [], regular: []},
+    initialState: {pinned: [...announcementsData.pinned], regular: [...announcementsData.regular]},
     reducers:{
         addAnnouncement(state, {payload: announcement}){
             if (announcement.isPinned) state.pinned.push(announcement)
