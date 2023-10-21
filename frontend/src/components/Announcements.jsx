@@ -6,10 +6,12 @@ import PinnedAnnouncement from "./PinnedAnnouncement"
 import NoResult from "./NoResult"
 import { Typography } from "@material-tailwind/react"
 import { NewspaperIcon } from "@heroicons/react/24/outline"
+import usePaginatedPage from "../hooks/usePaginatedPage"
 
 const Announcements = () => {
     const pinnedAnnouncements = useSelector(state => state.announcements.pinned)
-    const regularAnnouncements = useSelector(state => state.announcements.regular)
+    const paginatedPage = usePaginatedPage()
+    const regularAnnouncements = paginatedPage()
 
     return (
         <div className="container min-w-full bg-gray-50 text-blue-gray-900 py-10">
