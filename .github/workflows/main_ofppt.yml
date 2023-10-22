@@ -61,4 +61,4 @@ jobs:
           app-name: 'ofppt'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2CBC97D2B0374B659EF46C4118532E11 }}
-          package: .
+          package: frontend/dist
