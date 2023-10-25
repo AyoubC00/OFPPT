@@ -49,8 +49,8 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="w-9/12 m-auto">
-      <div className="w-50">
+    <div className=" sm:w-9/12 md:w-7/12 lg:w-7/12  mx-auto ">
+      
         
         <Slider {...settings}>
           {Data.map((event, index) => (
@@ -62,7 +62,7 @@ const Carousel = () => {
             />
           ))}
         </Slider>
-      </div>
+      
     </div>
   );
 };

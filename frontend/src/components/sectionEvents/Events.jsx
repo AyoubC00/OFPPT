@@ -5,7 +5,7 @@ const Events = () => {
 
 
   return (
-    <div className="container min-w-full bg-gray-50 text-blue-gray-900 py-10 h-screen">
+    <div className="container min-w-full p-5 sm:p-1 m-auto bg-gray-50 text-blue-gray-900  ">
               <Typography variant="h2" className="sm:text-5xl px-4 text-center mb-10 font-normal">
                   <CalendarIcon className="h-16 inline align-middle me-5 text-blue-gray-900"/>
                   Evenements
