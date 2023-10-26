@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux"
 import Announcements from "./components/Announcements"
 import LoginSection from "./features/loginSection/LoginSection"
 import Hero from "./features/hero/Hero"
@@ -11,6 +10,7 @@ function App() {
       <Hero />
       <LoginSection />
       <Announcements />
+      <Events/>
     </>
   )
 }

@@ -18,3 +18,7 @@ div::-webkit-scrollbar-thumb
 {
     background-color: theme("colors.blue-gray.500");
 }
+.slick-dots{
+    bottom: -35px;
+    
+}
