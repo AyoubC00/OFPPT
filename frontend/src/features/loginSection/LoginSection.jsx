@@ -1,5 +1,6 @@
 import { CardHeader, Typography, Input, Button, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react"
 import { Card } from "@material-tailwind/react"
+import Myway from "../myway/Myway"
 
 const LoginSection = () =>
 {
@@ -20,6 +21,7 @@ const LoginSection = () =>
                 <rect width='100%' height='100%' fill='url(#b)' fillOpacity='0.44'/>
             </svg>
             <div className="p-4 sm:px-16 xl:w-5/6 xl:mx-auto">
+                <Myway />
                 <Card className="mx-auto bg-transparent shadow-none md:flex md:flex-row md:gap-16">
                     <div className="hidden sm:flex sm:flex-col sm:w-full lg:w-2/3">
                         <Typography className="mb-2">L'éducation est la clé d'un meilleur avenir pour tous. Travaillons ensemble pour que chacun ait accès à une éducation de qualité.</Typography>
