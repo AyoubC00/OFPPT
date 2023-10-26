@@ -22,7 +22,7 @@ const Announcements = () => {
             <div className="px-4 sm:px-16 lg:grid lg:grid-rows-1 lg:grid-cols-5 lg:gap-x-8 xl:gap-x-8 xl:w-5/6 xl:mx-auto">
                 
                 <div className="overflow-y-auto h-674 mb-16 bg-white lg:mb-0 lg:col-span-2 row-start-2 row-end-3">
-                    <Typography variant="h4" className="bg-white p-6 sticky top-0 z-50 shadow-sm">Pinned</Typography>
+                    <Typography variant="h4" className="bg-white p-6 sticky top-0 z-20 shadow-sm">Pinned</Typography>
                     {
                         pinnedAnnouncements.length ?
                         pinnedAnnouncements.map(announcement => 

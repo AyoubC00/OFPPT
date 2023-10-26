@@ -1,11 +1,14 @@
 import Announcements from "./components/Announcements"
-import { useDispatch } from "react-redux"
-import { addAnnouncement } from "./features/announcements/AnnouncementsSlice"
-import Events from "./components/sectionEvents/Events"
+import LoginSection from "./features/loginSection/LoginSection"
+import Hero from "./features/hero/Hero"
+import Navbar from "./features/navbar/Navbar"
 
 function App() {
   return (
     <>
+      <Navbar />
+      <Hero />
+      <LoginSection />
       <Announcements />
       <Events/>
     </>

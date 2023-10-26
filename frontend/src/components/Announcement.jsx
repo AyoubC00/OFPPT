@@ -1,10 +1,18 @@
 import { Card, CardBody, Typography, Chip } from "@material-tailwind/react"
 
+const minimizeText = text =>
+{
+    if (text.split(' ').length > 38)
+    return text.split(' ').slice(0, 38).join(' ') + '...'
+    else
+    return text
+}
+
 const Announcement = ({ id, title, datetime, description }) => 
 {
     return (
         <a href="">
-            <Card className="rounded-sm shadow hover:shadow-md transition-all">
+            <Card className="rounded-sm shadow hover:shadow-md transition-all h-[218px]">
                 <CardBody>
                     <div className="flex flex-col md:flex-row justify-between items-top mb-4">
                         <div className="order-2 md:order-1">
@@ -15,7 +23,7 @@ const Announcement = ({ id, title, datetime, description }) =>
                                 <Chip variant="filled" color="red" value="Nouveau" className="ms-auto border-none h-fit rounded-sm" />
                         </div>
                     </div>
-                    <Typography>{ description }</Typography>
+                    <Typography>{ minimizeText(description) }</Typography>
                 </CardBody>
             </Card>
         </a>
