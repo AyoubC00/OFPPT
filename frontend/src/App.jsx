@@ -1,10 +1,10 @@
-import Announcements from "./components/Announcements"
 import { useDispatch } from "react-redux"
-import { addAnnouncement } from "./features/announcements/AnnouncementsSlice"
-
+import Announcements from "./components/Announcements"
+import LoginSection from "./features/loginSection/LoginSection"
 function App() {
   return (
     <>
+      <LoginSection />
       <Announcements />
     </>
   )
