@@ -1,7 +1,5 @@
 import { CardHeader, Typography, Input, Button, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react"
-import { Card, CardBody } from "@material-tailwind/react"
-import { AcademicCapIcon, ArrowLongRightIcon, ArrowRightIcon, ArrowSmallRightIcon } from "@heroicons/react/24/outline"
-import { MdMinimize, MdOutlineAdminPanelSettings } from "react-icons/Md"
+import { Card } from "@material-tailwind/react"
 
 const LoginSection = () =>
 {
@@ -19,7 +17,7 @@ const LoginSection = () =>
                     <circle  fill='#FAFAFA' cx='17' cy='17' r='17'/>
                 </pattern>
                 <rect width='100%' height='100%' fill='url(#a)'/>
-                <rect width='100%' height='100%' fill='url(#b)' fillOpacity='0.22'/>
+                <rect width='100%' height='100%' fill='url(#b)' fillOpacity='0.44'/>
             </svg>
             <div className="p-4 sm:px-16 xl:w-5/6 xl:mx-auto">
                 <Card className="mx-auto bg-transparent shadow-none md:flex md:flex-row md:gap-16">
