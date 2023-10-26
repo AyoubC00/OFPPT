@@ -55,6 +55,7 @@ const Carousel = () => {
         <Slider {...settings}>
           {Data.map((event, index) => (
             <CarouselEvent
+              key={event.title}
               title={event.title}
               description={event.description}
               imageUrl={event.imageUrl}

@@ -36,7 +36,7 @@ import {FaPeopleRoof} from "react-icons/fa6";
                     />
                   </CardHeader>
                   <CardBody className="h-40">
-                  <Typography variant="h4" color="blue-gray ">
+                  <Typography variant="h4" color="blue-gray">
                       {title}
                     </Typography>
                     <Typography variant="lead" color="gray" className="mt-3  text-sm">
@@ -56,7 +56,7 @@ import {FaPeopleRoof} from "react-icons/fa6";
                             }
                             
                           </div>
-                          <div class="ml-4 mt-px">{publisher}</div>
+                          <div className="ml-4 mt-px">{publisher}</div>
                       </div> 
                       
                     </div>
