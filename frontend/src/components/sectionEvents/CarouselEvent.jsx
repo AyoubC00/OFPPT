@@ -11,28 +11,22 @@ import { BuildingOffice2Icon } from "@heroicons/react/24/outline"
 import {FaPeopleRoof} from "react-icons/fa6";
    
   const  CarouselEvent =({imageUrl,description,title,publisher})=>{
-    // const truncateDescription =({description}) => {
-    //   if (description.length <= 70) {
-    //     return description;
-    //   } else {
-    //     return description.slice(0, 70) + '...';
-    //   }
-    // }
     
     return (
-              <div className="h-96 p-3 ">
-                
+              <div className="h-96 p-3 w-full ">
+                <a href="">
                 <Card className=" w-full lg:w-9/12  h-full overflow-hidden text-start ">
                   <CardHeader
                     floated={false}
                     shadow={false}
                     color="transparent"
-                    className="m-0 h-30 rounded-none"
+                    className="m-2 h-30 rounded-lg"
                   >
                     <img
+                      className="transform hover:scale-90"
                       src={imageUrl}
                       alt="ui/ux review check"
-                      className="object-scale-down"
+                     
                     />
                   </CardHeader>
                   <CardBody className="h-40">
@@ -63,6 +57,7 @@ import {FaPeopleRoof} from "react-icons/fa6";
                     <Typography className=" text-sm sm:text-xs">01/01/2001</Typography>
                   </CardFooter>
                 </Card>
+                </a>
                 </div>
     );
   }
