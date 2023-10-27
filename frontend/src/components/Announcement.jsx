@@ -12,7 +12,7 @@ const Announcement = ({ id, title, datetime, description }) =>
 {
     return (
         <a href="">
-            <Card className="rounded-sm shadow hover:shadow-md transition-all h-[218px]">
+            <Card className="rounded-sm shadow hover:shadow-md transition-all md:h-[218px]">
                 <CardBody>
                     <div className="flex flex-col md:flex-row justify-between items-top mb-4">
                         <div className="order-2 md:order-1">

@@ -6,14 +6,12 @@ const currentYear = new Date().getFullYear();
 
 const Footer =() =>{
 
-
-
     return (
     
     <footer className="relative w-full  p-5 bg-blue-gray-900">
       <div className="mx-auto w-9/12 max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 " >
-          <div className="">
+          <div>
                 <Typography variant="h3" className="mb-3 font-normal text-blue-gray-200">
                     Contact info
                 </Typography>
@@ -48,7 +46,7 @@ const Footer =() =>{
           <Typography
             as="a"
             href="#"
-            color="blue-gray-200-200"
+            color="blue-gray"
             className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
           >
             Accueil
@@ -58,7 +56,7 @@ const Footer =() =>{
           <Typography
             as="a"
             href="#"
-            color="blue-gray-200"
+            color="blue-gray"
             className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
           >
             A propos
@@ -68,7 +66,7 @@ const Footer =() =>{
           <Typography
             as="a"
             href="#"
-            color="blue-gray-200"
+            color="blue-gray"
             className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
           >
             Les Filieres
@@ -78,7 +76,7 @@ const Footer =() =>{
           <Typography
             as="a"
             href="#"
-            color="blue-gray-200"
+            color="blue-gray"
             className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
           >
             Espace candidate
