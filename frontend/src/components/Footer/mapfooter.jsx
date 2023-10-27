@@ -15,8 +15,8 @@ const GoogleMap = () => {
   }, []);
 
   return (
-    <div>
-      <div id="map" style={{ width: '80%', height: '200px' }}></div>
+    <div className="min-w-full">
+      <div id="map" className="w-full h-[15rem]"></div>
     </div>
   );
 };
