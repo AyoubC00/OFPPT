@@ -21,10 +21,7 @@ const Footer =() =>{
                 <Typography  className="font-normal text-blue-gray-200">
                     Email : support@ofppt.ma
                 </Typography>
-                <ButtonGroup className="mt-3" variant="gradient">
-                    <img src="https://www.ofppt.ma/themes/custom/ofppt/assets/images/logo.png" alt="avatar" variant="rounded" />
-                </ButtonGroup>
-                
+                <img src="https://www.ofppt.ma/themes/custom/ofppt/assets/images/logo.png" alt="Logo" />
           </div>
        
           <GoogleMap />
