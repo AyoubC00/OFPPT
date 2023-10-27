@@ -10,7 +10,7 @@ const Carousel = () => {
   const [settings, setSettings] = useState({
     infinite: true,
     speed: 2000,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
     dots: true,
@@ -30,7 +30,7 @@ const Carousel = () => {
     } else {
       setSettings({
         ...settings,
-        slidesToShow: 3, // Adjust this value for desktop
+        slidesToShow: 4, // Adjust this value for desktop
         slidesToScroll: 1,
       });
     }
@@ -39,17 +39,17 @@ const Carousel = () => {
   useEffect(() => {
     updateCarouselSettings();
 
-    // Listen for window resize events to update the settings
+    
     window.addEventListener('resize', updateCarouselSettings);
 
-    // Remove the event listener when the component unmounts
+    
     return () => {
       window.removeEventListener('resize', updateCarouselSettings);
     };
   }, []);
 
   return (
-    <div className=" sm:w-9/12 md:w-7/12 lg:w-7/12  mx-auto ">
+    <div className=" w-9/12 md:w-7/12 lg:w-9/12  mx-auto ">
       
         
         <Slider {...settings}>
