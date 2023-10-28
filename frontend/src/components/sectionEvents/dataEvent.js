@@ -1,45 +1,52 @@
 const Data = [
     {
-      title: "Card 1",
-      description: "This is the first card description.This is the seventh card description.",
+      title: "Entraînement",
+      description: "Une séance d'entraînement hebdomadaire pour le club de football.",
       imageUrl:"https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80", 
-      publisher:"admin"
+      publisher:"club_de_football",
+      date: "2023/10/22"
     },
     {
-      title: "Card 2",
-      description: "This is the second card description.This is the seventh card description.",
+      title: "Atelier de peinture",
+      description: "Un atelier sur différentes techniques de peinture.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      publisher:"Club"
+      publisher:"club_d'art",
+      date: "2023/10/30"
   },
     {
-      title: "Card 3",
-      description: "This is the third card description.This is the seventh card description.",
+      title: "Exposition",
+      description: "Une exposition d'œuvres d'art réalisées par les membres du club d'art.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      publisher:"admin"
+      publisher:"club_d'art",
+      date: "2023/11/01"
     },
     {
-      title: "Card 4",
-      description: "This is the fourth card description.This is the seventh card description.",
+      title: "Match",
+      description: "Un match de football contre une autre établisement.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      publisher:"Club"
+      publisher:"club_de_football",
+      date: "2023/11/09"
     },
     {
-      title: "Card 5",
-      description: "This is the fifth card description.This is the seventh card description.",
+      title: "Atelier de codage",
+      description: "Un atelier sur les bases du codage des robots.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      publisher:"Club"
+      publisher:"clubs_de_robotique",
+      date: "2023/11/15"
     },
     {
-      title: "Card 6",
-      description: "This is the sixth card description.jkkjmkmkmkmk klklk",
+      title: "Visite scolaire au musée",
+      description: "Une sortie scolaire au musée de la ville pour voir des œuvres d'art de différentes cultures et époques.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      publisher:"admin"
+      publisher:"club_d'art",
+      date: "2023/11/22"
     },
     {
-      title: "Card 7",
-      description: "This is the seventh carescription.This is the seventh card description.",
+      title: "Atelier de pilotage de drones",
+      description: "Un atelier sur la façon de piloter des drones.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",
-      publisher:"Club"
+      publisher:"clubs_de_robotique",
+      date: "2023/11/28"
     },
   ];
   

@@ -10,7 +10,7 @@ import {
 import { BuildingOffice2Icon } from "@heroicons/react/24/outline"
 import {FaPeopleRoof} from "react-icons/fa6";
    
-  const  CarouselEvent =({imageUrl,description,title,publisher})=>{
+  const  CarouselEvent =({imageUrl,description,title,publisher,date})=>{
     
     return (
       <a href="">
@@ -50,7 +50,7 @@ import {FaPeopleRoof} from "react-icons/fa6";
                 </div> 
                 
               </div>
-              <Typography className=" text-sm sm:text-xs">01/01/2001</Typography>
+              <Typography className=" text-sm sm:text-xs">{ date }</Typography>
             </CardFooter>
         </Card>
       </a>

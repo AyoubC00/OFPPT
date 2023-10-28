@@ -62,6 +62,7 @@ const Carousel = () => {
             description={event.description}
             imageUrl={event.imageUrl}
             publisher={event.publisher}
+            date={event.date}
             className="bg-red-40"
           />
         ))}
