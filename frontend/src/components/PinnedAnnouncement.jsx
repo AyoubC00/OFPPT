@@ -12,7 +12,7 @@ const PinnedAnnouncement = ({ id, title, datetime, description }) =>
                             <BsPinAngleFill className="text-3xl inline"/>
                             <Typography variant="small" color="blue-gray" className="font-bold inline md:block">{ datetime }</Typography>
                         </div>
-                        <Typography variant="h6" color="blue-gray" className="w-full text-start">[DDOWFS] - Lorem ipsum dolor amet doloas saloa kiloa lkas</Typography>
+                        <Typography variant="h6" color="blue-gray" className="w-full text-start">{ title }</Typography>
                     </div>
                 </CardBody>
             </Card>
