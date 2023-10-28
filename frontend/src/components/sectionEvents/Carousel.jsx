@@ -9,17 +9,18 @@ import Data from './dataEvent';
 const Carousel = () => {
   const [settings, setSettings] = useState({
     infinite: true,
-    speed: 2000,
+    speed: 4000,
     slidesToShow: 4,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     dots: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 10000,
   });
 
   const updateCarouselSettings = () => {
     const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth < 1025;
 
     if (isMobile) {
       setSettings({
@@ -27,10 +28,16 @@ const Carousel = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
       });
+    } else if (isTablet) {
+      setSettings({
+        ...settings,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      });
     } else {
       setSettings({
         ...settings,
-        slidesToShow: 4, // Adjust this value for desktop
+        slidesToShow: 3, // Adjust this value for desktop
         slidesToScroll: 1,
       });
     }
@@ -38,32 +45,27 @@ const Carousel = () => {
 
   useEffect(() => {
     updateCarouselSettings();
-
-    
     window.addEventListener('resize', updateCarouselSettings);
 
-    
     return () => {
       window.removeEventListener('resize', updateCarouselSettings);
     };
   }, []);
 
   return (
-    <div className=" w-9/12 md:w-7/12 lg:w-9/12  mx-auto ">
-      
-        
-        <Slider {...settings}>
-          {Data.map((event, index) => (
-            <CarouselEvent
-              key={event.title}
-              title={event.title}
-              description={event.description}
-              imageUrl={event.imageUrl}
-              publisher={event.publisher}
-            />
-          ))}
-        </Slider>
-      
+    <div className="lg:w-10/12 px-4 md:px-16 mx-auto">
+      <Slider {...settings}>
+        {Data.map((event, index) => (
+          <CarouselEvent
+            key={event.title}
+            title={event.title}
+            description={event.description}
+            imageUrl={event.imageUrl}
+            publisher={event.publisher}
+            className="bg-red-40"
+          />
+        ))}
+      </Slider>
     </div>
   );
 };

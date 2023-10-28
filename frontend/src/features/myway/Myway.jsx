@@ -4,9 +4,14 @@ import mywayLogo from "../../assets/myway.png"
 const Myway = () =>
 {
     return (
-        <div className="container flex justify-between p-10 mb-20 bg-white rounded-md px-16 shadow-md items-center">
+        <div className="container flex justify-between py-10 mb-20 bg-white rounded-md px-4 md:px-16 shadow-md items-center">
             <div>
-                <img src={ mywayLogo } alt="Myway logo" className="text-center"/>
+                <div className="flex justify-between lg:justify-center items-center">
+                    <img src={ mywayLogo } alt="Myway logo" className="mb-5"/>
+                    <a href="https://www.myway.ac.ma/fr" className="lg:hidden">
+                        <Button color="blue-gray" className="h-fit py-5">Découvrez My Way</Button>
+                    </a>
+                </div>
                 <Typography>
                     Vous êtes sur la bonne voie, pour devenir acteur du Maroc des Compétences !
                 </Typography>
@@ -14,7 +19,7 @@ const Myway = () =>
                     Bien choisir votre métier est votre premier pas sur le chemin de la réussite.
                 </Typography>
             </div>
-            <a href="https://www.myway.ac.ma/fr">
+            <a href="https://www.myway.ac.ma/fr" className="hidden lg:block">
                 <Button color="blue-gray" className="h-fit py-5">Découvrez My Way</Button>
             </a>
         </div>

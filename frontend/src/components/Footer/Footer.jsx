@@ -8,8 +8,8 @@ const Footer =() =>{
 
     return (
     
-    <footer className="relative w-full  p-5 bg-blue-gray-900">
-      <div className="mx-auto w-9/12 max-w-7xl px-8">
+    <footer className="relative min-w-full pt-10 bg-blue-gray-900">
+      <div className="mx-auto lg:w-10/12 px-4 md:px-16">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 " >
           <div>
                 <Typography variant="h3" className="mb-3 font-normal text-blue-gray-200">
@@ -21,18 +21,12 @@ const Footer =() =>{
                 <Typography  className="font-normal text-blue-gray-200">
                     Email : support@ofppt.ma
                 </Typography>
-                <ButtonGroup className="mt-3" variant="gradient">
-                    <Button><Avatar src="https://www.ofppt.ma/themes/custom/ofppt/assets/images/logo.png" alt="avatar" variant="rounded" /></Button>
-                    <Button>OFPPT</Button>
-                </ButtonGroup>
-                
+                <img src="https://www.ofppt.ma/themes/custom/ofppt/assets/images/logo.png" alt="Logo" />
           </div>
        
-          <div >
           <GoogleMap />
-          </div>
         </div>
-        <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-400 py-4 md:flex-row md:justify-between">
+        <div className="mt-12 flex min-w-full flex-col items-center justify-center border-t border-blue-gray-400 py-4 md:flex-row md:justify-between">
           <Typography
             variant="small"
             className="mb-4 text-center font-normal text-blue-gray-200 md:mb-0"
