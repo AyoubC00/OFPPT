@@ -1,0 +1,6 @@
+export { default as AnnouncementsSlice } from "./announcements/AnnouncementsSlice"
+export { default as eventsSlice } from "./announcements/eventsSlice"
+export { default as hero } from "./announcements/hero"
+export { default as loginSection } from "./announcements/loginSection"
+export { default as myway } from "./announcements/myway"
+export { default as navbar } from "./announcements/navbar"

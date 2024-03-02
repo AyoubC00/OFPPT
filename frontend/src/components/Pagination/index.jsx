@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { nextPage, previousPage, targetPage } from "../features/announcements/AnnouncementsSlice";
+import { nextPage, previousPage, targetPage } from "../../features/announcements/AnnouncementsSlice";
 import { useDispatch } from "react-redux"
-import usePageNumbers from "../hooks/usePageNumbers"
+import usePageNumbers from "../../hooks/usePageNumbers"
 
 export function Pagination() {
   const [active, setActive] = useState(1);

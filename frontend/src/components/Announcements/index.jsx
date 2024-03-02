@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux"
 
 import Announcement from "./Announcement"
-import Pagination from "./Pagination"
-import PinnedAnnouncement from "./PinnedAnnouncement"
-import NoResult from "./NoResult"
+import Pagination from "../Pagination"
+import PinnedAnnouncement from "../PinnedAnnoncemet"
+import NoResult from "../NoResult"
 import { Typography } from "@material-tailwind/react"
 import { NewspaperIcon } from "@heroicons/react/24/outline"
-import usePaginatedPage from "../hooks/usePaginatedPage"
+import usePaginatedPage from "../../hooks/usePaginatedPage"
 
 const Announcements = () => {
     const pinnedAnnouncements = useSelector(state => state.announcements.pinned)

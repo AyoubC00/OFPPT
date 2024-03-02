@@ -6,6 +6,7 @@ const Navbar = () =>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Les filières</a></li>
                 <li><a href="#">A propos</a></li>
+                <li className="ms-auto"><a href="login">Login</a></li>
             </ul>
         </nav>
     )
