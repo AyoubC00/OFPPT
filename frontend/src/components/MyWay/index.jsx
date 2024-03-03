@@ -1,10 +1,10 @@
 import { Typography, Button } from "@material-tailwind/react"
 import mywayLogo from "../../assets/myway.png"
 
-const Myway = () =>
+const MyWay = () =>
 {
     return (
-        <div className="container flex justify-between py-10 mb-20 bg-white rounded-md px-4 md:px-16 shadow-md items-center">
+        <div className="container flex justify-between py-10 bg-white rounded-md px-4 md:px-16 shadow-md items-center">
             <div>
                 <div className="flex justify-between lg:justify-center items-center">
                     <img src={ mywayLogo } alt="Myway logo" className="mb-5"/>
@@ -26,4 +26,4 @@ const Myway = () =>
     )
 }
 
-export default Myway
+export default MyWay

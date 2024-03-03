@@ -1,0 +1,29 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 779 367" width="779" height="367">
+	<title>ofpptlogo-ai</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m-64-192.09h907.09v907.09h-907.09z"/>
+		</clipPath>
+	</defs>
+	<style>
+		.s0 { fill: none;stroke: #009d57;stroke-miterlimit:3.864;stroke-width: .4 } 
+		.s1 { fill: #00519a } 
+		.s2 { fill: none;stroke: #00519a;stroke-miterlimit:3.864;stroke-width: .4 } 
+		.s3 { fill: #009d57 } 
+		.s4 { fill: #989b9d } 
+	</style>
+	<g id="_Artboards_">
+	</g>
+	<g id="Layer 1">
+		<g id="&lt;Clip Group&gt;" clip-path="url(#cp1)">
+			<path id="&lt;Path&gt;" class="s0" d="m82.7 183.1l102.3-102.3 102.3 102.3-102.3 102.2z"/>
+			<path id="&lt;Path&gt;" class="s0" d="m2.5 183.4l182.5-182.5 182.5 182.5-182.5 182.5z"/>
+			<path id="&lt;Compound Path&gt;" fill-rule="evenodd" class="s1" d="m411.6 183.4l182.5-182.5 182.5 182.5-182.5 182.5zm182.5 101.9l102.3-102.3-102.3-102.2-102.3 102.2z"/>
+			<path id="&lt;Path&gt;" class="s2" d="m491.8 183.1l102.3-102.3 102.2 102.3-102.2 102.2z"/>
+			<path id="&lt;Compound Path&gt;" fill-rule="evenodd" class="s3" d="m2.5 183.4l182.5-182.5 182.5 182.5-182.5 182.5zm182.5 101.9l102.3-102.3-102.3-102.2-102.3 102.2z"/>
+			<path id="&lt;Path&gt;" class="s4" d="m491.8 103.1l-102.3-102.2-182.5 182.5 40.1 39.9 142.4-142.5 62.4 62.4z"/>
+			<path id="&lt;Path&gt;" class="s2" d="m411.6 183.4l182.5-182.5 182.5 182.5-182.5 182.5z"/>
+			<path id="&lt;Path&gt;" class="s4" d="m287 263.9l102 102 182.5-182.6-40-39.9-142.5 142.6-62.1-62.1z"/>
+		</g>
+	</g>
+</svg>

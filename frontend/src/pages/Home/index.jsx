@@ -1,11 +1,12 @@
-import { Footer, Events, Filieres, Navbar, Hero, LoginSection, Announcements } from '../../components'
+import { Footer, Events, Filieres, Navbar, Hero, LoginSection, Announcements, MyWay } from '../../components'
 
 function Home() {
   return (
     <>
-      <Navbar />
-      <Hero />
+      {/* <Navbar /> */}
+      {/* <Hero /> */}
       <LoginSection />
+      {/* <MyWay /> */}
       <Announcements />
       <Events/>
       <Filieres/>
