@@ -9,7 +9,7 @@ import Data from './dataEvent';
 const Carousel = () => {
   const [settings, setSettings] = useState({
     infinite: true,
-    speed: 4000,
+    speed: 3000,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
