@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stagiaire extends Model
+class Option extends Model
 {
     use HasFactory;
 
-    public function quizzes()
+    public function question()
     {
-        return $this->belongsToMany(Quiz::class, 'stagaire_quiz')->withPivot('score', 'createdAt');
+        return $this->belongsTo(Question::class);
     }
 }
