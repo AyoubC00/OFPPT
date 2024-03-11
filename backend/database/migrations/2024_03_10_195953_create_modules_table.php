@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("code");
-            $table->unsignedInteger("masse_horaire");
-            $table->unsignedInteger("groupe_id");
+            $table->unsignedBigInteger("masse_horaire");
+            $table->unsignedBigInteger("groupe_id");
             $table->timestamps();
 
             $table->foreign('groupe_id')->references('id')->on('groupes')->onDelete('cascade');

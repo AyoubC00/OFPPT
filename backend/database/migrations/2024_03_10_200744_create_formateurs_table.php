@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('formateurs', function (Blueprint $table) {
             $table->string('matricule')->primary()->unique();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

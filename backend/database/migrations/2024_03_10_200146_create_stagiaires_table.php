@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('stagiaires', function (Blueprint $table) {
             $table->string('cef')->primary()->unique();
-            $table->unsignedInteger('groupe_id');
-            $table->unsignedInteger('filiere_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('groupe_id');
+            $table->unsignedBigInteger('filiere_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('groupe_id')->references('id')->on('groupes')->onDelete('cascade');
