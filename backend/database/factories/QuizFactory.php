@@ -18,7 +18,7 @@ class QuizFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'group_id' => function () {
+            'groupe_id' => function () {
                 return \App\Models\Groupe::factory()->create()->id;
             },
             'module_id' => function () {

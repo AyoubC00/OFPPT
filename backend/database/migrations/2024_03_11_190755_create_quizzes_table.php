@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("formateur_id");
             $table->timestamps();
 
-            $table->foreign('group_id')->references('id')->on('groupes');
+            $table->foreign('groupe_id')->references('id')->on('groupes');
             $table->foreign('module_id')->references('id')->on('modules');
             $table->foreign('formateur_id')->references('matricule')->on('formateurs');
         });
