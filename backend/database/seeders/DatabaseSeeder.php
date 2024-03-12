@@ -5,9 +5,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Groupe;
-use App\Models\Option;
-use App\Models\Question;
-use App\Models\Quiz;
 use App\Models\Administrateur;
 use App\Models\Module;
 use App\Models\Stagiaire;
@@ -18,8 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Seed users (including stagiaires)
-        User::factory(5)->create();
+        User::factory(10)->create();
 
+        // Seed administrateurs
+        $administrateurs = User::where('role', 'administrateur')->get();
+        $administrateurs->each(function ($administrateur) {
+            Administrateur::factory()->create(['user_id' => $administrateur->id]);
+        });
         // Seed stagiaires
         $stagiaires = User::where('role', 'stagiaire')->get();
         $stagiaires->each(function ($stagiaire) {
@@ -32,32 +34,14 @@ class DatabaseSeeder extends Seeder
             Formateur::factory()->create(['user_id' => $formateur->id]);
         });
 
-        // Seed administrateurs
-        $administrateurs = User::where('role', 'administrateur')->get();
-        $administrateurs->each(function ($administrateur) {
-            Administrateur::factory()->create(['user_id' => $administrateur->id]);
-        });
 
         // Seed groups with modules
         Groupe::all()->each(function ($groupe) {
             Module::factory()->create(['groupe_id' => $groupe->id]);
         });
 
-        // Seed questions with options
-        Question::factory(10)->create()->each(function ($question) {
-            $question->options()->saveMany(Option::factory(4)->make());
-        });
-
-        // Seed quizzes and attach questions
-        Quiz::factory(2)->create()->each(function ($quiz) {
-            $questions = Question::inRandomOrder()->limit(rand(5, 10))->get();
-            $quiz->questions()->attach($questions);
-        });
-
-        // Seed stagiaires' attempts on quizzes
-        $stagiaires->each(function ($stagiaire) {
-            $quizzes = Quiz::inRandomOrder()->limit(rand(1, 2))->get();
-            $stagiaire->stagiaire->quizzes()->attach($quizzes, ['score' => rand(0, 100)]);
-        });
+        $this->call(QuestionSeeder::class);
+        $this->call(OptionSeeder::class);
+        $this->call(QuizSeeder::class);
     }
 }
