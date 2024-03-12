@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->unsignedBigInteger("group_id");
+            $table->unsignedBigInteger("groupe_id");
             $table->unsignedBigInteger("module_id");
             $table->string("formateur_id");
             $table->timestamps();
