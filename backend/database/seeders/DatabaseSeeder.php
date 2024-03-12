@@ -17,33 +17,47 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Seed users (including stagiaires)
         User::factory(5)->create();
 
+        // Seed stagiaires
         $stagiaires = User::where('role', 'stagiaire')->get();
-        foreach ($stagiaires as $stagiaire) {
+        $stagiaires->each(function ($stagiaire) {
             Stagiaire::factory()->create(['user_id' => $stagiaire->id]);
-        }
+        });
 
+        // Seed formateurs
         $formateurs = User::where('role', 'formateur')->get();
-        foreach ($formateurs as $formateur) {
+        $formateurs->each(function ($formateur) {
             Formateur::factory()->create(['user_id' => $formateur->id]);
-        }
+        });
 
+        // Seed administrateurs
         $administrateurs = User::where('role', 'administrateur')->get();
-        foreach ($administrateurs as $administrateur) {
+        $administrateurs->each(function ($administrateur) {
             Administrateur::factory()->create(['user_id' => $administrateur->id]);
-        }
+        });
 
+        // Seed groups with modules
         Groupe::all()->each(function ($groupe) {
             Module::factory()->create(['groupe_id' => $groupe->id]);
         });
 
-        Quiz::factory(5)->create();
-        Question::factory(20)->create();
-        Option::factory(40)->create();
+        // Seed questions with options
+        Question::factory(10)->create()->each(function ($question) {
+            $question->options()->saveMany(Option::factory(4)->make());
+        });
 
-        Quiz::all()->each(function ($quiz) {
-            $quiz->questions()->attach(Question::inRandomOrder()->limit(rand(5, 10))->pluck('id'));
+        // Seed quizzes and attach questions
+        Quiz::factory(2)->create()->each(function ($quiz) {
+            $questions = Question::inRandomOrder()->limit(rand(5, 10))->get();
+            $quiz->questions()->attach($questions);
+        });
+
+        // Seed stagiaires' attempts on quizzes
+        $stagiaires->each(function ($stagiaire) {
+            $quizzes = Quiz::inRandomOrder()->limit(rand(1, 2))->get();
+            $stagiaire->stagiaire->quizzes()->attach($quizzes, ['score' => rand(0, 100)]);
         });
     }
 }
