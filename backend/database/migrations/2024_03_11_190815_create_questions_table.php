@@ -17,11 +17,11 @@ return new class extends Migration
             $table->text("description");
             $table->integer("score");
             $table->unsignedBigInteger("module_id");
-            $table->unsignedBigInteger("formateur_id");
+            $table->string("formateur_id");
             $table->timestamps();
 
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->foreign('formateur_id')->references('id')->on('formateurs');
+            $table->foreign('formateur_id')->references('matricule')->on('formateurs');
         });
     }
 

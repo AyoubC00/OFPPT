@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string("title");
             $table->unsignedBigInteger("group_id");
             $table->unsignedBigInteger("module_id");
-            $table->unsignedBigInteger("formateur_id");
+            $table->string("formateur_id");
             $table->timestamps();
 
-            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('group_id')->references('id')->on('groupes');
             $table->foreign('module_id')->references('id')->on('modules');
-            $table->foreign('formateur_id')->references('id')->on('formateurs');
+            $table->foreign('formateur_id')->references('matricule')->on('formateurs');
         });
     }
 
