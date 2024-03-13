@@ -4,14 +4,15 @@ import {
  Input,
  Button,
  Typography,
- Switch
+ Switch,
+ Textarea
 } from "@material-tailwind/react";
 
 export const AnnouncementForm = () => {
  return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
       <Card color="transparent" shadow={false} className="w-full max-w-lg">
-        <Typography variant="h4" color="blue-gray">
+        <Typography variant="h4" color="blue-gray" className="text-center mb-4">
           Ajouter un announcement
         </Typography>
         <form className="mt-8 mb-2 w-full max-w-lg">
@@ -30,14 +31,7 @@ export const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               sujet d'annonce
             </Typography>
-            <Input
-              size="lg"
-              placeholder="cette annonce est à propos de ....."
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
+            <Textarea placeholder="cette annonce est à propos de ....." className="resize-none"/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
@@ -50,13 +44,13 @@ export const AnnouncementForm = () => {
                 className: "before:content-none after:content-none",
               }}
             />
-            <Switch label="Pin"/>
+            <Switch label="Pin" className="text-blue-gray-500"/>
           </div>
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" color="blue-gray" fullWidth>
             Ajouter l'annonce
           </Button>
         </form>
       </Card>
     </div>
- )
-}
+ );
+};

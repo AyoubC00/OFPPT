@@ -1,19 +1,19 @@
 import React from "react";
 import {
-  Card,
-  Input,
-  Button,
-  Typography,
-  Switch,
-  Select,
-  Option,
+ Card,
+ Input,
+ Button,
+ Typography,
+ Switch,
+ Select,
+ Option,
 } from "@material-tailwind/react";
 
 export const EvenementsForm = () => {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+ return (
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
       <Card color="transparent" shadow={false} className="w-full max-w-lg">
-        <Typography variant="h4" color="blue-gray">
+        <Typography variant="h4" color="blue-gray" className="text-center mb-4">
           Ajouter un événement
         </Typography>
         <form className="mt-8 mb-2 w-full max-w-lg">
@@ -23,14 +23,14 @@ export const EvenementsForm = () => {
             </Typography>
             <Input
               size="lg"
-              placeholder="exemple:Atelier de pienture...."
+              placeholder="exemple:Atelier de peinture...."
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              sujet d'événement
+              Sujet d'événement
             </Typography>
             <Input
               size="lg"
@@ -41,9 +41,9 @@ export const EvenementsForm = () => {
               }}
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-            sélectionner un club
+              Sélectionner un club
             </Typography>
-            <Select label="choisissez un club ">
+            <Select label="choisissez un club " size="lg" className="!border-t-blue-gray-200 focus:!border-t-gray-900">
               <Option>...</Option>
               <Option>...</Option>
               <Option>...</Option>
@@ -75,11 +75,11 @@ export const EvenementsForm = () => {
               }}
             />
           </div>
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" color="blue-gray" fullWidth>
             Ajouter l'événement
           </Button>
         </form>
       </Card>
     </div>
-  );
+ );
 };
