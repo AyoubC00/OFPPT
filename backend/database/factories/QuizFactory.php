@@ -25,7 +25,7 @@ class QuizFactory extends Factory
                 return \App\Models\Module::factory()->create()->id;
             },
             'formateur_id' => function () {
-                return \App\Models\Formateur::factory()->create()->id;
+                return \App\Models\Formateur::factory()->create()->matricule;
             },
         ];
     }

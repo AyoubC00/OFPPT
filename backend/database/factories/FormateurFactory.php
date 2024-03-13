@@ -17,7 +17,10 @@ class FormateurFactory extends Factory
     public function definition(): array
     {
         return [
-            'matricule' => fake()->numerify('##########')
+            'matricule' => fake()->numerify('##########'),
+            'user_id' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
         ];
     }
 }
