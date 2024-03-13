@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout, DashboardLayout } from "./pages/Layouts"
 import { Home, Login } from "./pages"
-
+import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
+import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
 
 const dashboardRoutes = [
@@ -44,6 +45,14 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <DashboardLayout />,
+        children: dashboardRoutes
+    },{
+        path: "/addAnnouncements",
+        element: <AnnouncementForm />,
+        children: dashboardRoutes
+    },{
+        path: "/addEvenements",
+        element: <EvenementsForm />,
         children: dashboardRoutes
     }
 ])
