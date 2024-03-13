@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stagiaire extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
     public function groupe()
     {
         return $this->belongsTo(Groupe::class,'id','groupe_id');
@@ -22,5 +23,11 @@ class Stagiaire extends Model
     public function filiere()
     {
         return $this->belongsTo(Filiere::class,'id','filiere_id');
+=======
+
+    public function quizzes()
+    {
+        return $this->belongsToMany(Quiz::class, 'stagaire_quiz')->withPivot('score', 'createdAt');
+>>>>>>> main
     }
 }
