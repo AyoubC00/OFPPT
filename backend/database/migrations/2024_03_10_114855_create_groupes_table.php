@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("code");
             $table->enum("annee",array(["1A","2A","3A"]));
-            $table->unsignedInteger("filiere_id");
+            $table->unsignedBigInteger("filiere_id");
             $table->timestamps();
             
             $table->foreign('filiere_id')->references('id')->on('filieres')->onDelete('cascade');

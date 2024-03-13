@@ -39,9 +39,11 @@ class DatabaseSeeder extends Seeder
         }
 
         $groupes = Groupe::all();
-        foreach($groupes as $groupe){
+        $formateurs = \App\Models\Formateur::all();
+        foreach($groupes as $index => $groupe){
             \App\Models\Module::factory()->create([
                 'groupe_id' => $groupe->id,
+                'formateur_id' => $formateurs[$index]->matricule,
             ]);
         }
     }
