@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StagiaireCollection;
+use App\Http\Resources\StagiaireResource;
 use App\Models\Stagiaire;
 use App\Http\Requests\StoreStagiaireRequest;
 use App\Http\Requests\UpdateStagiaireRequest;
@@ -13,7 +15,7 @@ class StagiaireController extends Controller
      */
     public function index()
     {
-        
+        return new StagiaireCollection(Stagiaire::all());        
     }
 
     /**
@@ -29,7 +31,7 @@ class StagiaireController extends Controller
      */
     public function store(StoreStagiaireRequest $request)
     {
-        //
+        Stagiaire::create($request->all());
     }
 
     /**
@@ -37,7 +39,7 @@ class StagiaireController extends Controller
      */
     public function show(Stagiaire $stagiaire)
     {
-        //
+        return new StagiaireResource($stagiaire);
     }
 
     /**
@@ -53,7 +55,7 @@ class StagiaireController extends Controller
      */
     public function update(UpdateStagiaireRequest $request, Stagiaire $stagiaire)
     {
-        //
+        $stagiaire->update($request->all());
     }
 
     /**
@@ -61,6 +63,6 @@ class StagiaireController extends Controller
      */
     public function destroy(Stagiaire $stagiaire)
     {
-        //
+        $stagiaire->delete();
     }
 }

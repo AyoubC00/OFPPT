@@ -11,19 +11,28 @@ use App\Models\User;
 class Stagiaire extends Model
 {
     use HasFactory;
-    public function groupe()
+    protected $primaryKey = "cef";
+    public $incrementing = false;
+    public function getKeyType() {
+        return 'string';
+    }
+
+    public function group()
     {
-        return $this->belongsTo(Groupe::class,'id','groupe_id');
+        return $this->belongsTo(Groupe::class, 'groupe_id', 'id');
     }
     public function user () {
-        return $this->belongsTo(User::class,'id','user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
     public function filiere()
     {
-        return $this->belongsTo(Filiere::class,'id','filiere_id');
+        return $this->belongsTo(Filiere::class, 'filiere_id', 'id');
     }
     public function quizzes()
     {
         return $this->belongsToMany(Quiz::class, 'stagaire_quiz')->withPivot('score', 'createdAt');
+    }
+    public function club () {
+        return $this->belongsTo(Club::class);
     }
 }
