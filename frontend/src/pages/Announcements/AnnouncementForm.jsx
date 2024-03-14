@@ -11,7 +11,7 @@ import {
 export const AnnouncementForm = () => {
  return (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
-      <Card color="transparent" shadow={false} className="w-full max-w-lg">
+      <Card color="transparent" shadow={false} className="sm:w-full max-w-lg">
         <Typography variant="h4" color="blue-gray" className="text-center mb-4">
           Ajouter un announcement
         </Typography>

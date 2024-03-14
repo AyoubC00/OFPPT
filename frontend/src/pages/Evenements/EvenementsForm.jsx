@@ -4,19 +4,19 @@ import {
  Input,
  Button,
  Typography,
- Switch,
+ Textarea,
  Select,
  Option,
 } from "@material-tailwind/react";
 
 export const EvenementsForm = () => {
  return (
-    <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
-      <Card color="transparent" shadow={false} className="w-full max-w-lg">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-8 gap-2 sm:gap-6">
+      <Card color="transparent" shadow={false} className="sm:w-full max-w-lg mx-4 sm:mx-0">
         <Typography variant="h4" color="blue-gray" className="text-center mb-4">
           Ajouter un événement
         </Typography>
-        <form className="mt-8 mb-2 w-full max-w-lg">
+        <form className="mt-8 mb-2 w-full">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Titre d'événement
@@ -32,18 +32,11 @@ export const EvenementsForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'événement
             </Typography>
-            <Input
-              size="lg"
-              placeholder="cette événement est à propos de ....."
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
+            <Textarea label="Description de l'événement" className="resize-none"/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sélectionner un club
             </Typography>
-            <Select label="choisissez un club " size="lg" className="!border-t-blue-gray-200 focus:!border-t-gray-900">
+            <Select label="choisissez un club " size="lg" >
               <Option>...</Option>
               <Option>...</Option>
               <Option>...</Option>
