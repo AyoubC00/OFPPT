@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GroupCollection;
+use App\Http\Resources\GroupResource;
 use App\Models\Groupe;
 use App\Http\Requests\StoreGroupeRequest;
 use App\Http\Requests\UpdateGroupeRequest;
@@ -13,7 +15,7 @@ class GroupeController extends Controller
      */
     public function index()
     {
-        //
+        return new GroupCollection(Groupe::all());
     }
 
     /**
@@ -27,9 +29,9 @@ class GroupeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreGroupeRequest $request)
+    public function store(StoreGroupeRequest $request, Groupe $groupe)
     {
-        //
+        $groupe->update($request->all());
     }
 
     /**
@@ -37,7 +39,7 @@ class GroupeController extends Controller
      */
     public function show(Groupe $groupe)
     {
-        //
+        return new GroupResource($groupe);
     }
 
     /**
@@ -53,7 +55,7 @@ class GroupeController extends Controller
      */
     public function update(UpdateGroupeRequest $request, Groupe $groupe)
     {
-        //
+        $groupe->update($request->all());
     }
 
     /**
@@ -61,6 +63,6 @@ class GroupeController extends Controller
      */
     public function destroy(Groupe $groupe)
     {
-        //
+        $groupe->delete();
     }
 }

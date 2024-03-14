@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\FiliereCollection;
+use App\Http\Resources\FiliereResource;
 use App\Models\Filiere;
 use App\Http\Requests\StoreFiliereRequest;
 use App\Http\Requests\UpdateFiliereRequest;
@@ -13,7 +15,7 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        //
+        return new FiliereCollection(Filiere::all());
     }
 
     /**
@@ -23,13 +25,13 @@ class FiliereController extends Controller
     {
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreFiliereRequest $request)
     {
-        //
+        Filiere::create($request->all());
     }
 
     /**
@@ -37,7 +39,7 @@ class FiliereController extends Controller
      */
     public function show(Filiere $filiere)
     {
-        //
+        return new FiliereResource($filiere);
     }
 
     /**
@@ -53,7 +55,7 @@ class FiliereController extends Controller
      */
     public function update(UpdateFiliereRequest $request, Filiere $filiere)
     {
-        //
+        $filiere->update($request->all());
     }
 
     /**
@@ -61,6 +63,6 @@ class FiliereController extends Controller
      */
     public function destroy(Filiere $filiere)
     {
-        //
+        $filiere->delete();
     }
 }
