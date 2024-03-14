@@ -19,7 +19,13 @@ class ModuleFactory extends Factory
         return [
             'name' => fake()->word(),
             'code' => fake()->regexify('[A-Z]{2}[0-9]{3}'),
-            'masse_horaire' => fake()->numberBetween(20, 120)
+            'masse_horaire' => fake()->numberBetween(20, 120),
+            'groupe_id' => function () {
+                return \App\Models\Groupe::factory()->create()->id;
+            },
+            'formateur_id' => function () {
+                return \App\Models\Formateur::factory()->create()->matricule;
+            },
         ];
     }
 }

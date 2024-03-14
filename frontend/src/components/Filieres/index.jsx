@@ -22,7 +22,7 @@ const Filieres = () => {
           >
             Mon parcours au OFPPT
           </Typography>
-          <Typography variant="p" className="mb-10 text-white">
+          <Typography variant="paragraph" className="mb-10 text-white">
             Vous ne savez pas par où commencer? Laissez-nous vous guider en quelques étapes faciles pour trouver des formations correspondant à votre situation et à vos intérêts.
           </Typography>
           <Button

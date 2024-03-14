@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("code");
-            $table->unsignedBigInteger("masse_horaire");
+            $table->unsignedMediumInteger("masse_horaire");
             $table->unsignedBigInteger("groupe_id");
+            $table->string("formateur_id");
             $table->timestamps();
 
             $table->foreign('groupe_id')->references('id')->on('groupes')->onDelete('cascade');
+            $table->foreign('formateur_id')->references('matricule')->on('formateurs')->onDelete('cascade');
         });
     }
 

@@ -20,7 +20,10 @@ class StagiaireFactory extends Factory
         return [
             'cef' => $this->faker->unique()->regexify('[A-Z]{5}[0-9]{3}'),
             'groupe_id' => \App\Models\Groupe::factory(['filiere_id'=>$filiere->id]),
-            'filiere_id' => $filiere->id
+            'filiere_id' => $filiere->id,
+            'user_id' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
         ];
     }
 }
