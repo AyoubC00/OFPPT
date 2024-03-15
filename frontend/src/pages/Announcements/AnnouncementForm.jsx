@@ -22,16 +22,13 @@ export const AnnouncementForm = () => {
             </Typography>
             <Input
               size="lg"
-              placeholder="exemple:les diplomes sont prêt"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
+              label="exemple:les diplomes sont prêt"
+             
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
-              sujet d'annonce
+              Sujet d'annonce
             </Typography>
-            <Textarea placeholder="cette annonce est à propos de ....." className="resize-none"/>
+            <Textarea label="description de l'annonce" className="resize-none"/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
