@@ -23,13 +23,19 @@ export const EvenementsForm = () => {
             </Typography>
             <Input
               size="lg"
-              label="exemple:Atelier de peinture...."
-
+              placeholder="titre"
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
             />
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'événement
             </Typography>
-            <Textarea label="Description de l'événement" className="resize-none "/>
+            <Textarea placeholder="Description de l'événement"  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sélectionner un club
             </Typography>
