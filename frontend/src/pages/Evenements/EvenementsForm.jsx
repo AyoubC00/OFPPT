@@ -24,7 +24,7 @@ export const EvenementsForm = () => {
             <Input
               size="lg"
               placeholder="titre"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -32,14 +32,17 @@ export const EvenementsForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'événement
             </Typography>
-            <Textarea placeholder="Description de l'événement"  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            <Textarea placeholder="Description de l'événement"  className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sélectionner un club
             </Typography>
-            <Select label="choisissez un club " size="lg"  >
+            <Select size="lg" className=" !border-blue-gray-200 "
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }} >
               <Option>...</Option>
               <Option>...</Option>
               <Option>...</Option>
@@ -53,7 +56,7 @@ export const EvenementsForm = () => {
               type="date"
               size="lg"
               placeholder=""
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -65,7 +68,7 @@ export const EvenementsForm = () => {
               type="date"
               size="lg"
               placeholder=""
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
