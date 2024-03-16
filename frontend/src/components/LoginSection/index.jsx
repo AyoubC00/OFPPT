@@ -15,15 +15,12 @@ const LoginSection = () =>
                             <Button variant="text" className="p-1 text-left mb-2 hover:bg-transparent text-sm">Vous n'avez pas encore de compte ? Créez-en un maintenant !</Button>
                         </div>
                     </div>
-                    <Card className="flex flex-col gap-3 lg:w-1/3 p-6 shadow-lg">
-                        <CardHeader className="p-4 -translate-y-8 text-center sm:hidden">
-                            <Typography variant="h4">Se connecté</Typography>
-                        </CardHeader>
+                    <Card className="flex flex-col gap-3 lg:w-1/3 p-8 md:p-6 shadow-lg">
                         <Input label="Email" color="blue-gray" variant="outlined"/>
                         <Input label="Mote de pass" type="password" color="blue-gray" variant="outlined"/>
                         <Button variant="filled" color="blue-gray" className="shadow-none hover:shadow-none">Connexion</Button>
                         <Button variant="text" className="sm:hidden text-xs p-1 text-left mt-4 hover:bg-transparent">Mote de passe oublié ?</Button>
-                        <Button variant="text" className="sm:hidden text-xs p-1 text-left mb-2 hover:bg-transparent">Créez une compte maintenant !</Button>
+                        <Button variant="text" className="sm:hidden text-xs p-1 text-left hover:bg-transparent">Créez une compte maintenant !</Button>
                     </Card>
                 </Card>
                 <MyWay />

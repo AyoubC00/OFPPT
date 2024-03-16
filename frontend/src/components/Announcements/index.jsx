@@ -15,8 +15,11 @@ const Announcements = () => {
 
     return (
         <div className="container min-w-full bg-gray-50 text-blue-gray-900 py-10">
-            <Typography variant="h2" className="sm:text-5xl px-4 text-center mb-10 font-normal">
+            {/* <Typography variant="h2" className="sm:text-5xl px-4 text-center mb-10 font-normal">
                 <NewspaperIcon className="h-16 inline align-middle me-5 text-blue-gray-900"/>
+                Announcements
+            </Typography> */}
+            <Typography variant="small" className="text-3xl px-4 mb-8 sm:px-16 md:w-3/4 md:mx-auto md:px-4">
                 Announcements
             </Typography>
             <div className="px-4 sm:px-16 lg:grid lg:grid-rows-1 lg:grid-cols-5 lg:gap-x-8 xl:gap-x-8 xl:w-5/6 xl:mx-auto">

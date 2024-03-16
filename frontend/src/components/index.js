@@ -1,6 +1,6 @@
 export {default as Footer} from "./Footer"
-export {default as Events}  from "./SectionEvents"
-export {default as Filieres}  from "./Filieres"
+export {default as Event}  from "./Events"
+export {default as Inscription}  from "./Inscription"
 export {default as Navbar}  from "./Navbar"
 export {default as Hero}  from "./Hero"
 export {default as LoginSection}  from "./LoginSection"

@@ -7,8 +7,34 @@ import {
  Switch,
  Textarea
 } from "@material-tailwind/react";
+import { useState } from "react";
 
 export const AnnouncementForm = () => {
+  const [announcement, setAnnouncement] = useState({title: '', description: '', displayDate: '', pinned: false, posted_by: 2});
+  const handleChange = ({target: { name, value }}) => 
+  {
+    if (name === "pinned")
+    {
+      setAnnouncement(prev => ({...prev, pinned: !prev.pinned}));
+      return
+    }
+    setAnnouncement(prev => ({...prev, [name]: value}));
+  }
+  const addAnnouncement = async () =>
+  {
+    const response = await fetch(
+      `${ import.meta.env.VITE_API}/announcements`, {
+      method: "POST",
+      body: JSON.stringify(announcement),
+      headers: {
+        "Content-Type" : "application/json",
+      }
+    })
+    console.log(response.ok ? "Announcement added successfully!" : "Failed to add the announcement")
+  }
+
+  
+  console.log(announcement)
  return (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
       <Card color="transparent" shadow={false} className="sm:w-full max-w-lg">
@@ -31,15 +57,24 @@ export const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
-            <Textarea placeholder="description de l'annonce"  className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            <Textarea 
+              placeholder="description de l'annonce"  
+              name="description"
+              value={ announcement.description } 
+              onChange={ handleChange } 
+              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
-                className: "before:content-none after:content-none",
+                className: "before:content-none after:content-none"
+            ,
               }}/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
             <Input
               type="date"
+              name="displayDate"
+              value={ announcement.displayDate }
+              onChange={ handleChange }
               size="lg"
               placeholder="10/01/2024"
               className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -47,9 +82,9 @@ export const AnnouncementForm = () => {
                 className: "before:content-none after:content-none",
               }}
             />
-            <Switch label="Pin" className="text-blue-gray-500"/>
+            <Switch label="Pin" name="pinned" value={ announcement.pinned } onClick={ handleChange } className="text-blue-gray-500"/>
           </div>
-          <Button className="mt-6" color="blue-gray" fullWidth>
+          <Button className="mt-6" color="blue-gray" onClick={ addAnnouncement } fullWidth>
             Ajouter l'annonce
           </Button>
         </form>

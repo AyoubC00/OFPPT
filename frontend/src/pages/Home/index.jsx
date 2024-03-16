@@ -1,4 +1,4 @@
-import { Footer, Events, Filieres, Navbar, Hero, LoginSection, Announcements, MyWay } from '../../components'
+import { Footer, Event, Inscription, Navbar, Hero, LoginSection, Announcements, MyWay } from '../../components'
 
 function Home() {
   return (
@@ -8,8 +8,8 @@ function Home() {
       <LoginSection />
       {/* <MyWay /> */}
       <Announcements />
-      <Events/>
-      <Filieres/>
+      <Event/>
+      <Inscription/>
       <Footer/>
     </>
   )
