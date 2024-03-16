@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('cin');
             $table->rememberToken();
             $table->timestamps();
+            $table->date('DateNaiss');
         });
     }
 
