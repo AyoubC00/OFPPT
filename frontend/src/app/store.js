@@ -5,7 +5,7 @@ import eventsReducer from "../features/events/eventsSlice"
 const store = configureStore({
     reducer: {
         announcements: announcementsReducer,
-               events:eventsReducer
+        events: eventsReducer,
     }
 });
 
