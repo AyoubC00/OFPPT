@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('groupes', function (Blueprint $table) {
-            $table->id();
+            $table->string('IdGr')->primary()->unique();
             $table->string("name");
             $table->string("code");
             $table->enum("annee",array(["1A","2A","3A"]));
