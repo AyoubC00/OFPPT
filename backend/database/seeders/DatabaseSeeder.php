@@ -20,6 +20,17 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(20)->create();
 
+        User::factory()->create([
+            "prenom" => "John",
+            "nom" => "Doe",
+            "cin" => "JA12345",
+            "email" => "johndoe@gmail.com",
+            "role" => "stagiaire",
+            "password" => "123456",
+            "remember_token" => null,
+            "DateNaiss" => "1994-12-03"
+        ]);
+
         $stagiaires = User::where('role', 'stagiaire')->get();
         foreach ($stagiaires as $stagiaire) {
             \App\Models\Stagiaire::factory()->create();

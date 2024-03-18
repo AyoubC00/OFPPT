@@ -45,12 +45,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function stagiaire () : HasOne {
-        return $this->hasOne(Stagiaire::class);
+    public function stagiaire()
+    {
+        return $this->hasOne(Stagiaire::class,'user_id');
     }
 
-    public function administrateur () : HasOne {
-        return $this->hasOne(Administrateur::class);
+    public function formateur()
+    {
+        return $this->hasOne(Formateur::class,'user_id');
+    }
+
+    public function administrateur()
+    {
+        return $this->hasOne(Administrateur::class,'user_id');
     }
 
     public function event () : HasMany {

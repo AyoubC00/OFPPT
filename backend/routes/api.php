@@ -1,13 +1,11 @@
 <?php
+ 
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\FiliereController;
-use App\Http\Controllers\GroupeController;
-use App\Http\Controllers\StagiaireController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClubController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,8 +17,29 @@ use App\Http\Controllers\ClubController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', function (Request $request) {
+    if (!Auth::attempt($request->only('email', 'password'))) {
+        return response(['message' => 'Invalid credentials'], 422);
+    }
+    $user = $request->user();
+    if ($user->role === "administrateur"){
+        $user[$user->role] = $user->administrateur;
+    } else if ($user->role === "formateur") {
+        $user[$user->role] = $user->formateur;
+    } else {
+        $user[$user->role] = $user->stagiaire;
+    }
+    $token = $user->createToken('api-token');
+    return ['token' => $token->plainTextToken,'user'=>$user];
+})->name("login");
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', function (Request $request) {
+        $request->user()->currentAccessToken()->delete();
+        return response()->noContent();
+    });
+    // other routes
+    Route::apiResource("demandes", DemandeController::class);
 });
 
 Route::apiResource("filieres", FiliereController::class);
