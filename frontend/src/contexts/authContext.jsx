@@ -11,7 +11,8 @@ export const AuthContextProvider = ({ children }) =>
     const headers = new Headers({ 
         "Content-Type": "application/json",
         "Access-Allow-Origin": "*",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Authorization": `Bearer ${ user.token }`
     });
     
     const auth = async ( userCredintials ) =>
@@ -26,7 +27,7 @@ export const AuthContextProvider = ({ children }) =>
             const userData = await response.json();
             sessionStorage.setItem("user", JSON.stringify(userData));
             setUser( { ...userData } );
-        }
+        } else return "Invalid Credentials"
     }
 
     const logout = async () =>

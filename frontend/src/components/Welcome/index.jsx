@@ -2,6 +2,7 @@ import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
 import { BookOpenIcon, CalendarDaysIcon, PaperClipIcon, Squares2X2Icon, ArrowUpOnSquareIcon } from "@heroicons/react/24/outline";
 import { useAuthContext } from "../../contexts/authContext";
 import { NavLink } from "react-router-dom";
+import LogoutButton from "../LogoutButton";
 
 const Welcome = ({ user }) =>
 {
@@ -14,10 +15,7 @@ const Welcome = ({ user }) =>
                         <Typography variant="lead">
                             Bienvenu, { user.nom } { user.prenom }
                         </Typography>
-                        <Button variant="text" size="sm" color="red" onClick={ logout }>
-                            <ArrowUpOnSquareIcon className="h-6 w-6 rotate-90 inline-block me-2"/>
-                            Déconnecter
-                        </Button>
+                        <LogoutButton />
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-y-2 xl:grid-cols-4 gap-x-4">
                         <NavLink to="/dashboard">
