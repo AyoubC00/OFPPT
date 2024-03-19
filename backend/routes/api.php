@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Absences;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FiliereController;
@@ -29,3 +30,24 @@ Route::apiResource("stagiaires", StagiaireController::class);
 Route::apiResource("clubs", ClubController::class);
 Route::apiResource("announcements", AnnouncementController::class);
 Route::apiResource("events", EventController::class);
+
+
+/*
+    Absence Api
+*/
+
+// getting all students 
+Route::get('/abs/all-stagiaires', [Absences::class, "ParPerson"])
+    ->name('absences.all_stagiaires');
+
+// this request is for the first page(contains all states that we need)
+Route::get('/abs/index', [Absences::class, "IndexPage"])
+    ->name('absences.ManyStudentWeek');
+
+// searching group's absents by date Y-M-D
+Route::get('/abs/groups-date', [Absences::class, 'GetGroupsByDate'])
+    ->name('absences.GetGroupsByDate');
+
+// searching for student's absence
+Route::get('/abs/StagiaireAbs', [Absences::class, 'StagiaireAbs'])
+    ->name('absences.StagiaireAbs');
