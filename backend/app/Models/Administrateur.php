@@ -13,6 +13,9 @@ class Administrateur extends Model
     public function announcements () : HasMany {
         return $this->hasMany(Announcement::class, "posted_by");
     }
+    public function event () : HasMany {
+        return $this->hasMany(event::class, "posted_by");
+    }
 
     public function user () : BelongsTo {
         return $this->belongsTo(User::class,"user_id");
