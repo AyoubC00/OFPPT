@@ -31,7 +31,7 @@ Route::post('/login', function (Request $request) {
     }
     $token = $user->createToken('api-token');
     return ['token' => $token->plainTextToken,'user'=>$user];
-})->name("login");
+});
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', function (Request $request) {
