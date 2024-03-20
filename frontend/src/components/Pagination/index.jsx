@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Button, IconButton } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { nextPage, previousPage, targetPage } from "../../features/announcements/AnnouncementsSlice";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import usePageNumbers from "../../hooks/usePageNumbers"
 
 export function Pagination() {
   const [active, setActive] = useState(1);
+  const { maxAnnouncements } = useSelector(({ announcements}) => announcements.config)
   const dispatch = useDispatch()
   // Get the numbers corresponding to the paginated pages
   const pages = usePageNumbers()
@@ -22,7 +23,7 @@ export function Pagination() {
     });
  
   const next = () => {
-    if (active === 3) return;
+    if (active === maxAnnouncements) return;
     
     setActive(active + 1);
     // Increment the currentPage 

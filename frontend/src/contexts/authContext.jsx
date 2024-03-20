@@ -7,35 +7,34 @@ export const AuthContextProvider = ({ children }) =>
 {
     const navigate = useNavigate();
     const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")) || {});
-
     const headers = new Headers({ 
         "Content-Type": "application/json",
         "Access-Allow-Origin": "*",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Authorization": `Bearer ${ user.token }`
     });
     
-    const auth = async ( userCredintials ) =>
+    const auth = async ( userCredentials ) =>
     {
         const response = await fetch(`${ import.meta.env.VITE_API }/login`, {
             method: "POST",
             headers,
-            body: JSON.stringify(userCredintials)
+            body: JSON.stringify(userCredentials)
         });
 
-        if (response.ok) {
-            const userData = await response.json();
-            sessionStorage.setItem("user", JSON.stringify(userData));
-            setUser( { ...userData } );
-        }
+        if (!response.ok) return "Invalid credentials"
+
+        const userData = await response.json();
+        sessionStorage.setItem("user", JSON.stringify(userData));
+        setUser( { ...userData } );
     }
 
     const logout = async () =>
     {
         const response = await fetch(`${ import.meta.env.VITE_API }/logout`, {
             method: "POST",
-            headers
+            headers,
         });
-        console.log("Logged out", response)
         if (response.ok) {
             sessionStorage.removeItem("user");
             setUser({})

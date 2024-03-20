@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->integer('level')->nullable();
-            $table->foreign('competence_id')->references('code')->on('competences')->onDelete('cascade')->onUpdate('restrict');
+            // $table->foreign('competence_id')->references('code')->on('competences')->onDelete('cascade')->onUpdate('restrict');
         });
     }
 
