@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("description");
+            $table->text("description");
             $table->boolean("pinned");
             $table->unsignedBigInteger("posted_by");
             $table->timestamps();

@@ -2,6 +2,7 @@ import { Avatar, MenuHandler, MenuList, Menu, MenuItem, Typography } from "@mate
 import { BookOpenIcon, CalendarDaysIcon, DocumentIcon, PaperClipIcon, Squares2X2Icon, ArrowUpOnSquareIcon } from "@heroicons/react/24/outline";
 import { useAuthContext } from "../../contexts/authContext";
 import { NavLink } from "react-router-dom";
+import LogoutButton from "../LogoutButton";
 
 const AvatarMenu = ({ className: classes }) =>
 {
@@ -45,8 +46,7 @@ const AvatarMenu = ({ className: classes }) =>
         </MenuItem>
         <hr className="my-3" />
         <MenuItem className="text-red-500" onClick={ logout }>
-          <ArrowUpOnSquareIcon className="h-6 w-6 rotate-90 inline-block me-2"/>
-          <Typography variant="small" className="inline">Déconnecter</Typography>
+          <LogoutButton variant="menuItem"/>
         </MenuItem>
       </MenuList>
     </Menu>

@@ -1,24 +1,26 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 
 import Announcement from "./Announcement"
 import Pagination from "../Pagination"
 import PinnedAnnouncement from "../PinnedAnnoncemet"
 import NoResult from "../NoResult"
 import { Typography } from "@material-tailwind/react"
-import { NewspaperIcon } from "@heroicons/react/24/outline"
 import usePaginatedPage from "../../hooks/usePaginatedPage"
+import { fetchAnnouncements } from "../../features/announcements/AnnouncementsSlice"
+import { useEffect } from "react"
 
 const Announcements = () => {
-    const pinnedAnnouncements = useSelector(state => state.announcements.pinned)
-    const paginatedPage = usePaginatedPage()
-    const regularAnnouncements = paginatedPage()
+    const { all, pinned } = useSelector(state => state.announcements)
+    const dispatch = useDispatch()
+    const paginatedPage = usePaginatedPage(all)
+    const announcements = paginatedPage()
 
+    useEffect( () => {
+        dispatch(fetchAnnouncements())
+    }, [])
+    
     return (
         <div className="container min-w-full bg-gray-50 text-blue-gray-900 py-10">
-            {/* <Typography variant="h2" className="sm:text-5xl px-4 text-center mb-10 font-normal">
-                <NewspaperIcon className="h-16 inline align-middle me-5 text-blue-gray-900"/>
-                Announcements
-            </Typography> */}
             <Typography variant="small" className="text-3xl px-4 mb-8 sm:px-16 md:w-3/4 md:mx-auto md:px-4">
                 Announcements
             </Typography>
@@ -27,8 +29,8 @@ const Announcements = () => {
                 <div className="overflow-y-auto h-fit max-h-674 mb-16 bg-white lg:mb-0 lg:col-span-2 row-start-2 row-end-3">
                     <Typography variant="h4" className="bg-white p-6 sticky top-0 z-20 shadow-sm">Pinned</Typography>
                     {
-                        pinnedAnnouncements.length ?
-                        pinnedAnnouncements.map(announcement => 
+                        pinned.length ?
+                        pinned.map(announcement => 
                             <PinnedAnnouncement key={ announcement.id } { ...announcement }/>    
                         ) :
                         <NoResult />
@@ -40,8 +42,8 @@ const Announcements = () => {
                 <div className="col-span-3 row-start-2 row-end-3">
                     <div className="flex flex-col gap-2">
                         {
-                            regularAnnouncements.length ?
-                            regularAnnouncements.map(announcement => 
+                            announcements.length ?
+                            announcements.map(announcement => 
                                 <Announcement key={ announcement.id } { ...announcement }/>    
                             ) :
                             <NoResult /> 

@@ -19,12 +19,12 @@ const dashboardRoutes = [
     {
         path: "courses",
         name: "Courses",
-        element: <Demande />
+        element: <h1>Courses</h1>
     },
     {
         path: "quizzes",
         name: "Quizes",
-        element: <Demande />
+        element: <h1>Quizzes</h1>
     },
     {
         path: "announcements",
@@ -39,7 +39,7 @@ const dashboardRoutes = [
     {
         path: "emploi_de_temps",
         name: "Emploi de temps",
-        element: "<h1>Emploi de temps</h1>",
+        element: <h1>Emploi de temps</h1>,
     }
 ]
 const router = createBrowserRouter([

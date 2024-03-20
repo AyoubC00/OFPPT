@@ -23,6 +23,29 @@ class DatabaseSeeder extends Seeder
             Administrateur::factory()->create(['user_id' => $administrateur->id]);
         });
         // Seed stagiaires
+        User::factory(20)->create();
+
+        User::factory()->create(
+            [
+                "prenom" => "john",
+                "nom" => "doe",
+                "email" => "johndoe@gmail.com",
+                "password" => "123456",
+                "role" => "administrateur",
+                "cin" => "JA12345",
+            ]
+        );
+        User::factory()->create(
+            [
+                "prenom" => "jane",
+                "nom" => "doe",
+                "email" => "janedoe@gmail.com",
+                "password" => "123456",
+                "role" => "administrateur",
+                "cin" => "JA67890",
+            ],
+        );
+
         $stagiaires = User::where('role', 'stagiaire')->get();
         $stagiaires->each(function ($stagiaire) {
             Stagiaire::factory()->create(['user_id' => $stagiaire->id]);

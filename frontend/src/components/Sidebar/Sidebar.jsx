@@ -8,7 +8,6 @@ import { useAuthContext } from '../../contexts/authContext'
 const Sidebar = () => {
 
   const { logout } = useAuthContext();
-  
   const iconStyle = "h-6 w-6 inline-block";
   const ICONS = {
     home : <HomeIcon className={ iconStyle } />,

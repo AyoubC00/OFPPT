@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\AnnouncementCollection;
 use App\Http\Resources\AnnouncementResource;
+use App\Models\Administrateur;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
@@ -22,7 +24,12 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        return Announcement::create($request->all());
+        $user = Auth::user();
+        if ($user->role === "administrateur")
+        {
+            $administrateur = Administrateur::where("user_id", $user->id)->first();
+            return $administrateur->announcements()->create($request->all());
+        }
     }
 
     /**
