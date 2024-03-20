@@ -19,6 +19,7 @@ class FormateurFactory extends Factory
         return [
             'matricule' => fake()->numerify('##########'),
             'user_id' => function () {
+                return \App\Models\Formateur::factory()->create()->id;
                 return \App\Models\User::factory()->create()->id;
             },
         ];

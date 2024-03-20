@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Models\Club;
 use App\Models\User;
 
@@ -13,7 +14,8 @@ class Stagiaire extends Model
     use HasFactory;
     protected $primaryKey = "cef";
     public $incrementing = false;
-    public function getKeyType() {
+    public function getKeyType()
+    {
         return 'string';
     }
 
@@ -21,7 +23,8 @@ class Stagiaire extends Model
     {
         return $this->belongsTo(Groupe::class, 'groupe_id', 'id');
     }
-    public function user () {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
     public function filiere()
@@ -32,7 +35,8 @@ class Stagiaire extends Model
     {
         return $this->belongsToMany(Quiz::class, 'stagaire_quiz')->withPivot('score', 'createdAt');
     }
-    public function club () {
+    public function club()
+    {
         return $this->belongsTo(Club::class);
     }
 }

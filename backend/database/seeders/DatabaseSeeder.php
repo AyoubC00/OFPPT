@@ -2,22 +2,27 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use \App\Models\User;
-use \App\Models\Groupe;
-use \App\Models\Option;
-use \App\Models\Question;
-use \App\Models\Quiz;
+use App\Models\User;
+use App\Models\Groupe;
+use App\Models\Administrateur;
+use App\Models\Module;
+use App\Models\Stagiaire;
+use App\Models\Formateur;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
-
     public function run(): void
     {
+        // Seed users (including stagiaires)
+        User::factory(10)->create();
+
+        // Seed administrateurs
+        $administrateurs = User::where('role', 'administrateur')->get();
+        $administrateurs->each(function ($administrateur) {
+            Administrateur::factory()->create(['user_id' => $administrateur->id]);
+        });
+        // Seed stagiaires
         User::factory(20)->create();
 
         User::factory()->create(
@@ -40,16 +45,18 @@ class DatabaseSeeder extends Seeder
                 "cin" => "JA67890",
             ],
         );
-        
-        $stagiaires = User::where('role', 'stagiaire')->get();
-        foreach ($stagiaires as $stagiaire) {
-            \App\Models\Stagiaire::factory()->create();
-        }
 
+        $stagiaires = User::where('role', 'stagiaire')->get();
+        $stagiaires->each(function ($stagiaire) {
+            Stagiaire::factory()->create(['user_id' => $stagiaire->id]);
+        });
+
+        // Seed formateurs
         $formateurs = User::where('role', 'formateur')->get();
-        foreach ($formateurs as $formateur) {
-            \App\Models\Formateur::factory()->create();
-        }
+        $formateurs->each(function ($formateur) {
+            Formateur::factory()->create(['user_id' => $formateur->id]);
+        });
+
 
         $administrateurs = User::where('role', 'administrateur')->get();
         foreach ($administrateurs as $administrateur) {
@@ -58,7 +65,7 @@ class DatabaseSeeder extends Seeder
 
         $groupes = Groupe::all();
         $formateurs = \App\Models\Formateur::all();
-        foreach($groupes as $index => $groupe){
+        foreach ($groupes as $index => $groupe) {
             \App\Models\Module::factory()->create();
         }
 
@@ -72,11 +79,13 @@ class DatabaseSeeder extends Seeder
         \App\Models\Option::factory(50)->create();
 
 
-        // Seed quiz_question pivot table
-        $quizzes = Quiz::all();
-        $questions = Question::all();
-        foreach ($quizzes as $quiz) {
-            $quiz->questions()->attach($questions->random(rand(5, 10))->pluck('id'));
-        }
+        // Seed groups with modules
+        Groupe::all()->each(function ($groupe) {
+            Module::factory()->create(['groupe_id' => $groupe->id]);
+        });
+
+        $this->call(QuestionSeeder::class);
+        $this->call(OptionSeeder::class);
+        $this->call(QuizSeeder::class);
     }
 }
