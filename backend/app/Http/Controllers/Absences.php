@@ -102,8 +102,7 @@ class Absences extends Controller
                 'NonJustifier' => $NonJustifier7DaysAgo,
                 'Justifier' => $Justifier7DaysAgo,
                 'GroupesFormateur' => [
-                    'Groupes' => $Groupes,
-                    'CountGroupes' => count($Groupes)
+                    'Groupes' => $Groupes
                 ],
                 'ScoredStudentAbs' => $Students,
                 'WeekAbs' => $Week
