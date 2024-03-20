@@ -1,9 +1,22 @@
-import { CardHeader, Typography, Input, Button, Tabs, TabsHeader, TabsBody, Tab, TabPanel } from "@material-tailwind/react"
+import { Typography, Input, Button } from "@material-tailwind/react"
 import { Card } from "@material-tailwind/react"
-import { MyWay } from "../"
+import { useState } from "react"
+import { useAuthContext } from "../../contexts/authContext"
 
 const LoginSection = () =>
 {
+    const [user, setUser] = useState({email: '', password: ''});
+    const { auth } = useAuthContext();
+
+    const handleChange = ({ target: { name, value }}) =>
+    {
+        setUser(prev => ({ ...prev, [name]: value }))
+    }
+
+    const handleLogin = () => {
+        auth(user)
+    }
+
     return (
         <div className="container min-w-full text-blue-gray-900 py-10">
             <div className="p-4 sm:px-16 xl:w-5/6 xl:mx-auto">
@@ -15,18 +28,14 @@ const LoginSection = () =>
                             <Button variant="text" className="p-1 text-left mb-2 hover:bg-transparent text-sm">Vous n'avez pas encore de compte ? Créez-en un maintenant !</Button>
                         </div>
                     </div>
-                    <Card className="flex flex-col gap-3 lg:w-1/3 p-6 shadow-lg">
-                        <CardHeader className="p-4 -translate-y-8 text-center sm:hidden">
-                            <Typography variant="h4">Se connecté</Typography>
-                        </CardHeader>
-                        <Input label="Email" color="blue-gray" variant="outlined"/>
-                        <Input label="Mote de pass" type="password" color="blue-gray" variant="outlined"/>
-                        <Button variant="filled" color="blue-gray" className="shadow-none hover:shadow-none">Connexion</Button>
+                    <Card className="flex flex-col gap-3 lg:w-1/3 p-8 md:p-6 shadow-lg">
+                        <Input label="Email" name="email" color="blue-gray" variant="outlined" value={ user.email } onChange={ handleChange }/>
+                        <Input label="Mote de pass" name="password" type="password" color="blue-gray" variant="outlined" value={ user.password } onChange={ handleChange }/>
+                        <Button variant="filled" color="blue-gray" className="shadow-none hover:shadow-none" onClick={ handleLogin }>Connexion</Button>
                         <Button variant="text" className="sm:hidden text-xs p-1 text-left mt-4 hover:bg-transparent">Mote de passe oublié ?</Button>
-                        <Button variant="text" className="sm:hidden text-xs p-1 text-left mb-2 hover:bg-transparent">Créez une compte maintenant !</Button>
+                        <Button variant="text" className="sm:hidden text-xs p-1 text-left hover:bg-transparent">Créez une compte maintenant !</Button>
                     </Card>
                 </Card>
-                <MyWay />
             </div>
         </div>
     )

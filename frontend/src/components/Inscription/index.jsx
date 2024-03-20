@@ -9,7 +9,7 @@ import {
 
 const Filieres = () => {
   return (
-    <div className="container min-w-full py-16 mt-16 bg-blue-gray-900 relative">
+    <div className="container min-w-full py-16 bg-blue-gray-900 relative">
       <Card
         shadow={false}
         className="relative bg-transparent grid items-end rounded-none justify-center overflow-hidden text-center"

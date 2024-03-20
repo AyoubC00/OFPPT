@@ -35,6 +35,27 @@ class DatabaseSeeder extends Seeder
         });
 
 
+        $administrateurs = User::where('role', 'administrateur')->get();
+        foreach ($administrateurs as $administrateur) {
+            \App\Models\Administrateur::factory()->create();
+        }
+
+        $groupes = Groupe::all();
+        $formateurs = \App\Models\Formateur::all();
+        foreach ($groupes as $index => $groupe) {
+            \App\Models\Module::factory()->create();
+        }
+
+        // Seed quizzes
+        \App\Models\Quiz::factory(10)->create();
+
+        // Seed questions
+        \App\Models\Question::factory(30)->create();
+
+        // Seed options
+        \App\Models\Option::factory(50)->create();
+
+
         // Seed groups with modules
         Groupe::all()->each(function ($groupe) {
             Module::factory()->create(['groupe_id' => $groupe->id]);

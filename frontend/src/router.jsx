@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout, DashboardLayout } from "./pages/Layouts"
-import { Home, Login } from "./pages"
-
+import { Home } from "./pages"
+import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
+import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
 
 const dashboardRoutes = [
     {
-        path: "",
-        name: "Home",
+        path: "/dashboard",
+        name: "Dashboard",
         element: "statistique if admin else  dakchi dyal stagiare"
     },
     {
@@ -16,14 +17,29 @@ const dashboardRoutes = [
         element: <Demande />
     },
     {
-        path: "cours",
+        path: "courses",
         name: "Courses",
         element: <Demande />
     },
     {
-        path: "quiz",
+        path: "quizzes",
         name: "Quizes",
         element: <Demande />
+    },
+    {
+        path: "announcements",
+        name: "Announcements",
+        element: <AnnouncementForm />,
+    },
+    {
+        path: "evenements",
+        name: "Evenements",
+        element: <EvenementsForm />,
+    },
+    {
+        path: "emploi_de_temps",
+        name: "Emploi de temps",
+        element: "<h1>Emploi de temps</h1>",
     }
 ]
 const router = createBrowserRouter([
@@ -35,10 +51,6 @@ const router = createBrowserRouter([
                 path: "",
                 element: <Home />
             },
-            {
-                path: "login",
-                element: <Login />
-            }
         ]
     },
     {

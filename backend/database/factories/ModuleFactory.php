@@ -23,6 +23,9 @@ class ModuleFactory extends Factory
             'groupe_id' => function () {
                 return \App\Models\Groupe::factory()->create()->id;
             },
+            'formateur_id' => function () {
+                return \App\Models\Formateur::factory()->create()->matricule;
+            },
         ];
     }
 }
