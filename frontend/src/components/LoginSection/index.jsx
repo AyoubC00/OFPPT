@@ -2,10 +2,12 @@ import { Typography, Input, Button } from "@material-tailwind/react"
 import { Card } from "@material-tailwind/react"
 import { useState } from "react"
 import { useAuthContext } from "../../contexts/authContext"
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
 const LoginSection = () =>
 {
-    const [user, setUser] = useState({email: '', password: ''});
+    const [user, setUser] = useState({ email: '', password: '' });
+    const [errors, setErrors] = useState({ email: '', password: '', message: '' })
     const { auth } = useAuthContext();
 
     const handleChange = ({ target: { name, value }}) =>
@@ -13,8 +15,20 @@ const LoginSection = () =>
         setUser(prev => ({ ...prev, [name]: value }))
     }
 
-    const handleLogin = () => {
-        auth(user)
+    const handleLogin = async ({ target }) => {
+        setErrors( { email: '', password: '', message: '' } );
+        target.disabled = true;
+        if (user.email && user.password)
+        {
+            const message = await auth(user);
+            if (message) setErrors(prev => ({ ...prev, message }))
+        }
+        else
+        {
+            if (!user.email) setErrors(prev => ({ ...prev, email: "Email is required " }))
+            if (!user.password) setErrors(prev => ({ ...prev, password: "Password is required " }))
+        }
+        target.disabled = false;
     }
 
     return (
@@ -29,8 +43,29 @@ const LoginSection = () =>
                         </div>
                     </div>
                     <Card className="flex flex-col gap-3 lg:w-1/3 p-8 md:p-6 shadow-lg">
-                        <Input label="Email" name="email" color="blue-gray" variant="outlined" value={ user.email } onChange={ handleChange }/>
-                        <Input label="Mote de pass" name="password" type="password" color="blue-gray" variant="outlined" value={ user.password } onChange={ handleChange }/>
+                        {
+                            errors.message ?
+                            <Typography variant="small" color="red" className="text-sm mb-4">
+                                <ExclamationTriangleIcon className="h-5 w-5 inline-block me-2" />
+                                { errors.message }
+                            </Typography> : null
+                        }
+                        <Input label="Email" name="email" color="blue-gray" variant="outlined" value={ user.email } onChange={ handleChange } />
+                        {
+                            errors.email ?
+                            <Typography variant="small" color="red" className="text-sm">
+                                <ExclamationTriangleIcon className="h-5 w-5 inline-block me-2"/>
+                                { errors.email }
+                            </Typography> : null
+                        }
+                        <Input label="Mote de pass" name="password" type="password" color="blue-gray" variant="outlined" value={ user.password } onChange={ handleChange } />
+                        {
+                            errors.password ?
+                            <Typography variant="small" color="red" className="text-sm">
+                                <ExclamationTriangleIcon className="h-5 w-5 inline-block me-2"/>
+                                { errors.password }
+                            </Typography> : null
+                        }
                         <Button variant="filled" color="blue-gray" className="shadow-none hover:shadow-none" onClick={ handleLogin }>Connexion</Button>
                         <Button variant="text" className="sm:hidden text-xs p-1 text-left mt-4 hover:bg-transparent">Mote de passe oublié ?</Button>
                         <Button variant="text" className="sm:hidden text-xs p-1 text-left hover:bg-transparent">Créez une compte maintenant !</Button>

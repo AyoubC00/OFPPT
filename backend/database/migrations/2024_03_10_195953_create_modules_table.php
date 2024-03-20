@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("code");
             $table->unsignedMediumInteger("masse_horaire");
-            $table->unsignedBigInteger("groupe_id");
+            $table->string("groupe_id");
             $table->string("formateur_id");
             $table->timestamps();
 

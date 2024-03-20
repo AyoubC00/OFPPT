@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('role', array("stagiaire", "formateur", "administrateur"));
-            $table->string('cin');
+            $table->string('cin')->unique();
             $table->rememberToken();
             $table->timestamps();
             $table->date('DateNaiss');
