@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Demande;
-use App\Http\Requests\StoreDemandeRequest;
-use App\Http\Requests\UpdateDemandeRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DemandeController extends Controller
@@ -14,13 +13,12 @@ class DemandeController extends Controller
      */
     public function index()
     {
-        $demandes = Demande::with('stagiaire.user');
         if (Auth::user()->role=="stagiaire"){
-            $demandes=$demandes->where("cef",Auth::user()->stagiaire->cef)->get();
+            $demandes= Demande::where("cef",Auth::user()->stagiaire->cef)->get();
         }
         elseif(Auth::user()->role=="administrateur")
         {
-            $demandes=$demandes->get();
+            $demandes=Demande::with('stagiaire.user')->get();
         }else{
             return response()->json(['message' => 'Unauthorized'], 403);
         }
@@ -31,7 +29,7 @@ class DemandeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDemandeRequest $request)
+    public function store(Request $request)
     {
         if (Auth::user()->role != "stagiaire") {
             return response()->json(['message' => 'Unauthorized'], 403);
@@ -47,7 +45,7 @@ class DemandeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDemandeRequest $request, Demande $demande)
+    public function update(Request $request, Demande $demande)
     {
         if (Auth::user()->role != "administrateur") {
             return response()->json(['message' => 'Unauthorized'], 403);
