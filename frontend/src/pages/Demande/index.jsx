@@ -1,312 +1,67 @@
-import React from 'react'
-import TableNavigation from './TableNavigation';
-
-const index = () => {
-  const convertDate = (created_at) => {
-    const date = new Date(created_at);
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
-    const day = date.getDate().toString().padStart(2, '0');
-    const hours = date.getHours().toString().padStart(2, '0');
-    const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
-   
-    return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
-   }
-  return (
-    <section className="p-5 h-full ">
-      <div className="mx-auto max-w-screen-2xl px-4 lg:px-12">
-        <div className="relative overflow-hidden bg-white shadow-md sm:rounded-lg">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm text-gray-500">
-              <thead className="bg-gray-50 text-xs uppercase text-gray-700">
-                <tr>
-                  <th scope="col" className="px-4 py-3">ID</th>
-                  <th scope="col" className="px-4 py-3">Type</th>
-                  <th scope="col" className="px-4 py-3">CEF</th>
-                  <th scope="col" className="px-4 py-3">Full Name</th>
-                  <th scope="col" className="px-4 py-3">Date</th>
-                  <th scope="col" className="px-4 py-3">Status</th>
-                  <th scope="col" className="px-4 py-3">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {demandes.map(demande=>(
-                  <tr className="border-b hover:bg-gray-100" key={demande.id}>
-                    <th scope="row" className="p-5 font-medium text-gray-900">{demande.id}</th>
-                    <td className="p-5">
-                      <span className="bg-primary-100 text-primary-800 rounded px-2 py-0.5 text-xs font-medium">{demande.type}</span>
-                    </td>
-                    <td className="p-5 font-medium text-gray-900"> {demande.cef} </td>
-                    <td className="p-5 font-medium text-gray-900"> {demande.stagiaire.user.nom +" "+ demande.stagiaire.user.prenom} </td>
-                    <td className="p-5 font-medium text-gray-900"> {convertDate(demande.created_at)} </td>
-                    <td className="p-5 font-medium text-gray-900"> {demande.status} </td>
-                    <td className="p-5 font-medium text-gray-900">Just now</td>
-                  </tr>
-                ))}
-                
-              </tbody>
-            </table>
-            <TableNavigation />
-          </div>
-        </div>
-      </div>
-    </section>
-
-  )
-}
-
-const demandes = [{
-  "id": 1,
-  "type": "type2",
-  "status": "Declined",
-  "cef": "ZREIL282",
-  "created_at": "2024-03-11T14:24:32.000000Z",
-  "updated_at": "2024-03-11T14:24:32.000000Z",
-  "stagiaire": {
-    "cef": "ZREIL282",
-    "groupe_id": 6,
-    "filiere_id": 6,
-    "user_id": 20,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 20,
-      "nom": "Kutch",
-      "prenom": "Boris",
-      "email": "jakubowski.grace@example.org",
-      "role": "stagiaire",
-      "cin": "56UL2s",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 2,
-  "type": "type3",
-  "status": "Waiting Return",
-  "cef": "DPTVJ628",
-  "created_at": "2024-03-11T14:24:32.000000Z",
-  "updated_at": "2024-03-11T14:24:32.000000Z",
-  "stagiaire": {
-    "cef": "DPTVJ628",
-    "groupe_id": 4,
-    "filiere_id": 4,
-    "user_id": 7,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 7,
-      "nom": "West",
-      "prenom": "Deshawn",
-      "email": "edgar60@example.net",
-      "role": "stagiaire",
-      "cin": "r6HsjS",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 3,
-  "type": "type1",
-  "status": "Accepted",
-  "cef": "ZREIL282",
-  "created_at": "2024-03-11T14:24:32.000000Z",
-  "updated_at": "2024-03-11T14:24:32.000000Z",
-  "stagiaire": {
-    "cef": "ZREIL282",
-    "groupe_id": 6,
-    "filiere_id": 6,
-    "user_id": 20,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 20,
-      "nom": "Kutch",
-      "prenom": "Boris",
-      "email": "jakubowski.grace@example.org",
-      "role": "stagiaire",
-      "cin": "56UL2s",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 4,
-  "type": "type2",
-  "status": "Declined",
-  "cef": "LECJI579",
-  "created_at": "2024-03-11T14:24:32.000000Z",
-  "updated_at": "2024-03-11T14:24:32.000000Z",
-  "stagiaire": {
-    "cef": "LECJI579",
-    "groupe_id": 1,
-    "filiere_id": 1,
-    "user_id": 2,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 2,
-      "nom": "Larkin",
-      "prenom": "Patricia",
-      "email": "eleanore.bradtke@example.net",
-      "role": "stagiaire",
-      "cin": "jD0DV9",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 5,
-  "type": "type1",
-  "status": "Returned",
-  "cef": "PBNZS202",
-  "created_at": "2024-03-11T14:24:32.000000Z",
-  "updated_at": "2024-03-11T14:24:32.000000Z",
-  "stagiaire": {
-    "cef": "PBNZS202",
-    "groupe_id": 5,
-    "filiere_id": 5,
-    "user_id": 8,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 8,
-      "nom": "Wilkinson",
-      "prenom": "Rocky",
-      "email": "jedediah.labadie@example.com",
-      "role": "stagiaire",
-      "cin": "YcSbdu",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 6,
-  "type": "type3",
-  "status": "Returned",
-  "cef": "DPTVJ628",
-  "created_at": "2024-03-11T14:24:33.000000Z",
-  "updated_at": "2024-03-11T14:24:33.000000Z",
-  "stagiaire": {
-    "cef": "DPTVJ628",
-    "groupe_id": 4,
-    "filiere_id": 4,
-    "user_id": 7,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 7,
-      "nom": "West",
-      "prenom": "Deshawn",
-      "email": "edgar60@example.net",
-      "role": "stagiaire",
-      "cin": "r6HsjS",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 7,
-  "type": "type1",
-  "status": "Declined",
-  "cef": "LECJI579",
-  "created_at": "2024-03-11T14:24:33.000000Z",
-  "updated_at": "2024-03-11T14:24:33.000000Z",
-  "stagiaire": {
-    "cef": "LECJI579",
-    "groupe_id": 1,
-    "filiere_id": 1,
-    "user_id": 2,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 2,
-      "nom": "Larkin",
-      "prenom": "Patricia",
-      "email": "eleanore.bradtke@example.net",
-      "role": "stagiaire",
-      "cin": "jD0DV9",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 8,
-  "type": "type3",
-  "status": "Returned",
-  "cef": "ZREIL282",
-  "created_at": "2024-03-11T14:24:33.000000Z",
-  "updated_at": "2024-03-11T14:24:33.000000Z",
-  "stagiaire": {
-    "cef": "ZREIL282",
-    "groupe_id": 6,
-    "filiere_id": 6,
-    "user_id": 20,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 20,
-      "nom": "Kutch",
-      "prenom": "Boris",
-      "email": "jakubowski.grace@example.org",
-      "role": "stagiaire",
-      "cin": "56UL2s",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 9,
-  "type": "type3",
-  "status": "Pending",
-  "cef": "DPTVJ628",
-  "created_at": "2024-03-11T14:24:33.000000Z",
-  "updated_at": "2024-03-11T14:24:33.000000Z",
-  "stagiaire": {
-    "cef": "DPTVJ628",
-    "groupe_id": 4,
-    "filiere_id": 4,
-    "user_id": 7,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 7,
-      "nom": "West",
-      "prenom": "Deshawn",
-      "email": "edgar60@example.net",
-      "role": "stagiaire",
-      "cin": "r6HsjS",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}, {
-  "id": 10,
-  "type": "type2",
-  "status": "Waiting Return",
-  "cef": "ZREIL282",
-  "created_at": "2024-03-11T14:24:33.000000Z",
-  "updated_at": "2024-03-11T14:24:33.000000Z",
-  "stagiaire": {
-    "cef": "ZREIL282",
-    "groupe_id": 6,
-    "filiere_id": 6,
-    "user_id": 20,
-    "created_at": "2024-03-10T23:18:23.000000Z",
-    "updated_at": "2024-03-10T23:18:23.000000Z",
-    "user": {
-      "id": 20,
-      "nom": "Kutch",
-      "prenom": "Boris",
-      "email": "jakubowski.grace@example.org",
-      "role": "stagiaire",
-      "cin": "56UL2s",
-      "created_at": "2024-03-10T23:18:23.000000Z",
-      "updated_at": "2024-03-10T23:18:23.000000Z"
-    }
-  }
-}]
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import { GrCertificate } from "react-icons/gr";
+// import { LiaCertificateSolid } from "react-icons/lia";
+import { GiDiploma } from "react-icons/gi";
+import { FaPlus } from "react-icons/fa6";
+import { RiBankCardLine } from "react-icons/ri";
 
 
-export default index
+const MyComponent = () => {
+    const tableData = [
+        { id: 1, type: 'Type 1', cef: 'CEF 1', fullName: 'name1', date: '2024-03-22', status: 'Active', action: 'Edit' },
+        { id: 2, type: 'Type 2', cef: 'CEF 2', fullName: 'name2', date: '2024-03-21', status: 'Active', action: 'Edit' },
+    ];
+return (
+    <div className='bg-gray-200 flex flex-col items-center justify-center min-h-screen'>
+    <div className="flex gap-4 mb-8">
+        <button className='grid place-items-center text-lg font-bold bg-gray-50 text-sky-300 p-5 rounded-lg shadow-md border border-transparent cursor-pointer transition-transform duration-500 size-40 hover:shadow-inner hover:inset-x-2 hover:inset-y-2 hover:border-gray-200 hover:translate-y-1'>
+        <GrCertificate className='text-sky-300 size-20'/>
+        Attestation scolaire
+        </button>
+        <button className='grid place-items-center text-lg font-bold bg-gray-50 text-sky-300 p-5 rounded-lg shadow-md border border-transparent cursor-pointer transition-transform duration-500 size-40 hover:shadow-inner hover:inset-x-2 hover:inset-y-2 hover:border-gray-200 hover:translate-y-1'>
+        <GiDiploma className='text-sky-300 size-20'/>
+        Baccalauréat
+        </button>
+        <button className='grid place-items-center text-lg font-bold bg-gray-50 text-sky-300 p-5 rounded-lg shadow-md border border-transparent cursor-pointer transition-transform duration-500 size-40 hover:shadow-inner hover:inset-x-2 hover:inset-y-2 hover:border-gray-200 hover:translate-y-1'>
+        <RiBankCardLine className='text-sky-300 size-20'/>
+        RIB
+        </button>
+        <button className='grid place-items-center text-lg font-bold bg-gray-50 text-sky-300 p-5 rounded-lg shadow-md border border-transparent cursor-pointer transition-transform duration-500 size-40 hover:shadow-inner hover:inset-x-2 hover:inset-y-2 hover:border-gray-200 hover:translate-y-1'>
+        <FaPlus className='text-sky-300 size-20'/>
+        Autre
+        </button>
+    </div>
+    <div className="max-w-full overflow-x-auto">
+        <table className="w-full table-auto">
+        <thead>
+            <tr className='text-center bg-sky-300'>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">ID</th>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">Type</th>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">CEF</th>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">Full Name</th>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">Date</th>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">Status</th>
+            <th className="w-1/6 min-w-[160px] py-4 px-3 text-lg font-medium text-white lg:py-7 lg:px-4">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {tableData.map(row => (
+            <tr key={row.id}>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-l border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.id}</td>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-[#E8E8E8] bg-white dark:border-dark dark:bg-dark-2 dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.type}</td>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.cef}</td>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-r border-[#E8E8E8] bg-white dark:border-dark dark:bg-dark-2 dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.fullName}</td>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.date}</td>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-r border-[#E8E8E8] bg-white dark:border-dark dark:bg-dark-2 dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.status}</td>
+                <td className="border border-gray-400 px-4 py-2 text-dark border-b border-[#E8E8E8] bg-[#F3F6FF] dark:bg-dark-3 dark:border-dark dark:text-dark-7 py-5 px-2 text-center text-base font-medium">{row.action}</td>
+            </tr>
+            ))}
+        </tbody>
+        </table>
+    </div>
+    </div>
+);
+};
+
+export default MyComponent;
