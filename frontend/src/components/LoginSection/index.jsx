@@ -7,11 +7,7 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 const LoginSection = () =>
 {
     const [user, setUser] = useState({ email: '', password: '' });
-<<<<<<< HEAD
-    const [error, setError] = useState({ email: '', password: '', message: '' })
-=======
     const [errors, setErrors] = useState({ email: '', password: '', message: '' })
->>>>>>> 055be3ba15c89bda4822134793b884e2fdf12dd0
     const { auth } = useAuthContext();
 
     const handleChange = ({ target: { name, value }}) =>
@@ -19,25 +15,7 @@ const LoginSection = () =>
         setUser(prev => ({ ...prev, [name]: value }))
     }
 
-<<<<<<< HEAD
-    const handleLogin = async ({ target }) => 
-    {
-        setError({ email: '', password: '', message: '' })
-        target.disabled = true
-        let message = '';
-        if ( user.email && user.password ) 
-        {
-            message = await auth(user)
-            console.log(message)
-            setError(prev => ({ ...prev, message }))
-        }
-        else
-        {
-            if (!user.email) setError(prev => ({ ...prev, email: "Email is required" }))
-            if (!user.password) setError(prev => ({ ...prev, password: "Password is required" }))
-        }
-        target.disabled = false
-=======
+
     const handleLogin = async ({ target }) => {
         setErrors( { email: '', password: '', message: '' } );
         target.disabled = true;
@@ -52,7 +30,6 @@ const LoginSection = () =>
             if (!user.password) setErrors(prev => ({ ...prev, password: "Password is required " }))
         }
         target.disabled = false;
->>>>>>> 055be3ba15c89bda4822134793b884e2fdf12dd0
     }
 
     return (
@@ -68,28 +45,6 @@ const LoginSection = () =>
                     </div>
                     <Card className="flex flex-col gap-3 lg:w-1/3 p-8 md:p-6 shadow-lg">
                         {
-<<<<<<< HEAD
-                            error.message ?
-                            <Typography variant="small" color="red" className="text-xs mb-2">
-                                <ExclamationTriangleIcon color="red" className="h-4 w-4 inline-block me-2"/>
-                                { error.message }
-                            </Typography> : null
-                        }
-                        <Input label="Email" name="email" color="blue-gray" variant="outlined" value={ user.email } onChange={ handleChange }/>
-                        {
-                            error.email ?
-                            <Typography variant="small" color="red" className="text-xs">
-                                <ExclamationTriangleIcon color="red" className="h-4 w-4 inline-block me-2"/>
-                                { error.email }
-                            </Typography> : null
-                        }
-                        <Input label="Mote de pass" name="password" type="password" color="blue-gray" variant="outlined" value={ user.password } onChange={ handleChange }/>
-                        {
-                            error.password ?
-                            <Typography variant="small" color="red" className="text-xs">
-                                <ExclamationTriangleIcon color="red" className="h-4 w-4 inline-block me-2"/>
-                                { error.password }
-=======
                             errors.message ?
                             <Typography variant="small" color="red" className="text-sm mb-4">
                                 <ExclamationTriangleIcon className="h-5 w-5 inline-block me-2" />
@@ -110,7 +65,6 @@ const LoginSection = () =>
                             <Typography variant="small" color="red" className="text-sm">
                                 <ExclamationTriangleIcon className="h-5 w-5 inline-block me-2"/>
                                 { errors.password }
->>>>>>> 055be3ba15c89bda4822134793b884e2fdf12dd0
                             </Typography> : null
                         }
                         <Button variant="filled" color="blue-gray" className="shadow-none hover:shadow-none" onClick={ handleLogin }>Connexion</Button>

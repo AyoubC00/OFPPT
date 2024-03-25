@@ -40,11 +40,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
     // other routes
     Route::apiResource("demandes", DemandeController::class);
+    Route::post("announcements", [AnnouncementController::class, "store"]);
+    Route::post("announcements", [AnnouncementController::class, "destroy"]);
 });
 
 Route::apiResource("filieres", FiliereController::class);
 Route::apiResource("groupes", GroupeController::class);
 Route::apiResource("stagiaires", StagiaireController::class);
 Route::apiResource("clubs", ClubController::class);
-Route::apiResource("announcements", AnnouncementController::class);
+Route::get("announcements", [AnnouncementController::class, "index"]);
+Route::get("announcements", [AnnouncementController::class, "show"]);
 Route::apiResource("events", EventController::class);
