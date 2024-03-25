@@ -14,7 +14,23 @@ const dashboardRoutes = [
     {
         path: "demandes",
         name: "Demandes",
-        element: <Demande />
+        element: <Demande />,
+        children:[{
+            path:"",
+            name:"Demandes administrateur",
+            element:<h1>demandes</h1>
+        },
+        {
+            path:"bac",
+            name:"Demandes administrateur",
+            element:<h1>bac</h1>
+        },
+        {
+            path:"historique",
+            name:"Demandes administrateur",
+            element:<h1>Historique</h1>
+        }
+    ]
     },
     {
         path: "courses",
