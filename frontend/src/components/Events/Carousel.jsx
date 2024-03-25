@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import CarouselEvent from './CarouselEvent';
-import Data from './dataEvent';
+import Data from '../../dataEvent';
 
 
 const Carousel = () => {

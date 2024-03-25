@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import Data from "../../components/sectionEvents/dataEvent"
+import Data from "../../dataEvent"
 const eventSlice = createSlice({
     name:"eve",
     initialState:{

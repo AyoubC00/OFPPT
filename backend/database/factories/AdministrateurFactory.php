@@ -17,6 +17,9 @@ class AdministrateurFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => function () {
+                return \App\Models\User::factory()->create()->id;
+            },
         ];
     }
 }

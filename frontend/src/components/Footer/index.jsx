@@ -10,7 +10,7 @@ const Footer =() =>{
     
     <footer className="relative min-w-full pt-10 bg-blue-gray-900">
       <div className="mx-auto lg:w-10/12 px-4 md:px-16">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col justify-between items-center flex-wrap md:flex-row ">
             <div>
                 <Typography variant="h3" className="mb-3 font-normal text-blue-gray-200">
                     Contact info
@@ -25,50 +25,47 @@ const Footer =() =>{
                     <MapPinIcon className="h-5 inline-block me-2" /> Institut Supérieur de Technologie Appliquée Ait Melloul, Aït Melloul 80000
                 </Typography>
             </div>
-            <div className="bg-white rounded-full flex flex-col justify-center p-4 w-32 h-32 text-center">
+            <div className="bg-white rounded-full flex flex-col justify-center p-4 w-32 h-32 text-center mx-auto mt-4 lg:mx-0 lg:ms-auto">
               <img src={ofppt_logo} className="w-full mb-1" alt="OFPPT Logo" />
               <span className="text-2xl font-semibold text-blue-gray-900">OFPPT</span>
             </div>
           </div>
-        <div className="mt-8 flex min-w-full flex-col items-center justify-center py-4 md:flex-row md:justify-between">
+        <div className="py-4 flex flex-col lg:flex-row justify-between items-center gap-2">
+          <ul className="flex flex-wrap justify-center mb-4 md:mb-0 gap-y-2 gap-x-4 lg:order-1 text-white">
+            <li>
+              <Typography
+                as="a"
+                href="#"
+                className="font-normal transition-colors hover:text-blue-gray-500 focus:text-blue-gray-500"
+              >
+                Accueil
+              </Typography>
+            </li>
+            <li>
+              <Typography
+                as="a"
+                href="#"
+                className="font-normal transition-colors hover:text-blue-gray-500 focus:text-blue-gray-500"
+              >
+                Filieres
+              </Typography>
+            </li>
+            <li>
+              <Typography
+                as="a"
+                href="#"
+                className="font-normal transition-colors hover:text-blue-gray-500 focus:text-blue-gray-500"
+              >
+                Espace candidat
+              </Typography>
+            </li>
+          </ul>
           <Typography
             variant="small"
-            className="mb-4 text-center font-normal text-blue-gray-50 md:mb-0"
+            className="mb-4 text-center font-normal text-blue-gray-100 md:mb-0"
           >
             &copy; {currentYear} <a href="/">Institut Supérieur de Technologie Appliquée Ait Melloul</a>
-            
           </Typography>
-          <div className="flex gap-4 text-blue-gray-50 sm:justify-center">
-            <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="font-normal transition-colors hover:text-blue-gray-500 focus:text-blue-gray-500"
-                >
-                  Accueil
-                </Typography>
-              </li>
-          <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="font-normal transition-colors hover:text-blue-gray-500 focus:text-blue-gray-500"
-                >
-                  Filieres
-                </Typography>
-              </li>
-              <li>
-                <Typography
-                  as="a"
-                  href="#"
-                  className="font-normal transition-colors hover:text-blue-gray-500 focus:text-blue-gray-500"
-                >
-                  Espace candidate
-                </Typography>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </footer>

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 
 const usePaginatedPage = () =>
 {
-    const regularAnnouncements = useSelector(({ announcements: { regular } }) => regular);
+    const announcements = useSelector(({ announcements }) => announcements.all);
     const { currentPage, maxAnnouncements } = useSelector(
         ({ announcements: { config } }) => config
     );
@@ -12,7 +12,7 @@ const usePaginatedPage = () =>
             (currentPage - 1) * maxAnnouncements,
             (currentPage - 1) * maxAnnouncements + maxAnnouncements
         ]
-        return regularAnnouncements.slice(start, end)
+        return announcements.slice(start, end)
     }
 }
 

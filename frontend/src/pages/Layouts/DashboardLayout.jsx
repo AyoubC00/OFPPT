@@ -1,17 +1,18 @@
 import { Outlet } from "react-router-dom"
 import { Sidebar } from "../../components/Sidebar"
+import { AuthContextProvider } from "../../contexts/authContext"
 
 const DashboardLayout = () =>
 {
     return (
-        <>
-            <div className="grid  grid-cols-[16rem,1fr] h-screen overflow-hidden">
-                <div><Sidebar/></div>
-                <div className="overflow-auto">
-                    <Outlet />
-                </div>
+        <AuthContextProvider>
+            <div>
+                <Sidebar/>
             </div>
-        </>
+            <div className="p-8 ps-72 w-full">
+                <Outlet />
+            </div>
+        </AuthContextProvider>
     )
 }
 
