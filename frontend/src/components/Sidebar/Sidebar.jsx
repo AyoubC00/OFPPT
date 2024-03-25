@@ -21,7 +21,7 @@ const Sidebar = () => {
   }
   
   return (
-    <div className="flex flex-col fixed h-full ps-9 pe-10 py-8 gap-3 shadow-md">
+    <div className="flex flex-col fixed h-full ps-9 pe-10 py-8 gap-3 shadow-md bg-blue-gray-500">
 
         <NavLink to="/" className="whitespace-pre">
           <IconButton variant='text' className="me-2 w-8 h-8 rounded-md">

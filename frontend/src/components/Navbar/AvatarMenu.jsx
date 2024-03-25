@@ -45,9 +45,13 @@ const AvatarMenu = ({ className: classes }) =>
           </NavLink>
         </MenuItem>
         <hr className="my-3" />
+<<<<<<< HEAD
         <MenuItem className="text-red-500" onClick={ logout }>
           <LogoutButton variant="menuItem"/>
         </MenuItem>
+=======
+        <LogoutButton variant="menuItem"/>
+>>>>>>> 055be3ba15c89bda4822134793b884e2fdf12dd0
       </MenuList>
     </Menu>
   )

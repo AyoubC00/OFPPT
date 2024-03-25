@@ -18,29 +18,19 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        User::factory(20)->create();
+        \App\Models\User::factory(20)->create();
 
-        User::factory()->create(
-            [
-                "prenom" => "john",
-                "nom" => "doe",
-                "email" => "johndoe@gmail.com",
-                "password" => "123456",
-                "role" => "administrateur",
-                "cin" => "JA12345",
-            ]
-        );
-        User::factory()->create(
-            [
-                "prenom" => "jane",
-                "nom" => "doe",
-                "email" => "janedoe@gmail.com",
-                "password" => "123456",
-                "role" => "administrateur",
-                "cin" => "JA67890",
-            ],
-        );
-        
+        User::factory()->create([
+            "prenom" => "John",
+            "nom" => "Doe",
+            "cin" => "JA12345",
+            "email" => "johndoe@gmail.com",
+            "role" => "stagiaire",
+            "password" => "123456",
+            "remember_token" => null,
+            "DateNaiss" => "1994-12-03"
+        ]);
+
         $stagiaires = User::where('role', 'stagiaire')->get();
         foreach ($stagiaires as $stagiaire) {
             \App\Models\Stagiaire::factory()->create();

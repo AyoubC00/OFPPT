@@ -1,19 +1,21 @@
-import { Outlet } from "react-router-dom"
-import { Sidebar } from "../../components/Sidebar"
-import { AuthContextProvider } from "../../contexts/authContext"
+import { Outlet } from "react-router-dom";
+import { Sidebar } from "../../components/Sidebar";
+import { AuthContextProvider } from "../../contexts/authContext";
 
-const DashboardLayout = () =>
-{
-    return (
-        <AuthContextProvider>
-            <div>
-                <Sidebar/>
-            </div>
-            <div className="p-8 ps-72 w-full">
-                <Outlet />
-            </div>
-        </AuthContextProvider>
-    )
-}
+const DashboardLayout = () => {
+  return (
+    <AuthContextProvider>
+      <div className="">
+        <div>
+          <Sidebar />
+        </div>
 
-export default DashboardLayout
+        <div className="ps-72 w-full ">
+          <Outlet />
+        </div>
+      </div>
+    </AuthContextProvider>
+  );
+};
+
+export default DashboardLayout;

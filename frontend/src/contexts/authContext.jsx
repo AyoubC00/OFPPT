@@ -22,11 +22,19 @@ export const AuthContextProvider = ({ children }) =>
             body: JSON.stringify(userCredentials)
         });
 
+<<<<<<< HEAD
         if (!response.ok) return "Invalid credentials"
 
         const userData = await response.json();
         sessionStorage.setItem("user", JSON.stringify(userData));
         setUser( { ...userData } );
+=======
+        if (response.ok) {
+            const userData = await response.json();
+            sessionStorage.setItem("user", JSON.stringify(userData));
+            setUser( { ...userData } );
+        } else return "Invalid Credentials"
+>>>>>>> 055be3ba15c89bda4822134793b884e2fdf12dd0
     }
 
     const logout = async () =>

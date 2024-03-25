@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'role' => fake()->randomElement(array("stagiaire", "formateur", "administrateur")),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'datenaiss' => fake()->date(),
+            'DateNaiss' => fake()->date()
         ];
     }
 

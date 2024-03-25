@@ -4,6 +4,7 @@ import { Home } from "./pages"
 import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
 import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
+import { Courses } from "./pages/courses/Courses";
 
 const dashboardRoutes = [
     {
@@ -19,7 +20,7 @@ const dashboardRoutes = [
     {
         path: "courses",
         name: "Courses",
-        element: <h1>Courses</h1>
+        element: <Courses/>
     },
     {
         path: "quizzes",
