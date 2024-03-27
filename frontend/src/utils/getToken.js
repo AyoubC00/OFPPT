@@ -1,6 +1,6 @@
 const getToken = () => {
     const user = JSON.parse(sessionStorage.getItem("user"));
-    return user?.token;
+    return `Bearer ${ user?.token }`;
 }
 
 export default getToken

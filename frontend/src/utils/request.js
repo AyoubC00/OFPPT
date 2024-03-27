@@ -6,7 +6,7 @@ const request = async (endpoint, method="GET", body=null) =>
         "Content-Type": "application/json",
         "Accept": "application/json",
         "Access-Control-Allow-Origin": "*",
-        "Authorization": `Bearer ${ getToken() }`
+        "Authorization": getToken()
     });
     const response = await fetch(`${ import.meta.env.VITE_API }/${ endpoint }`, {
         method,

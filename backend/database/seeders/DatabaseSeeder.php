@@ -30,6 +30,16 @@ class DatabaseSeeder extends Seeder
             "remember_token" => null,
             "DateNaiss" => "1994-12-03"
         ]);
+        User::factory()->create([
+            "prenom" => "Jane",
+            "nom" => "Doe",
+            "cin" => "JA23456",
+            "email" => "janedoe@gmail.com",
+            "role" => "administrateur",
+            "password" => "123456",
+            "remember_token" => null,
+            "DateNaiss" => "1994-12-03"
+        ]);
 
         $stagiaires = User::where('role', 'stagiaire')->get();
         foreach ($stagiaires as $stagiaire) {
@@ -45,6 +55,7 @@ class DatabaseSeeder extends Seeder
         foreach ($administrateurs as $administrateur) {
             \App\Models\Administrateur::factory()->create();
         }
+        \App\Models\Administrateur::factory()->create(["user_id" => 22]);
 
         $groupes = Groupe::all();
         $formateurs = \App\Models\Formateur::all();

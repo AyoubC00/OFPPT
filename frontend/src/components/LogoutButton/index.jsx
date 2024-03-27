@@ -1,4 +1,4 @@
-import { Button, MenuItem } from "@material-tailwind/react";
+import { Button, MenuItem, Typography } from "@material-tailwind/react";
 import { useAuthContext } from "../../contexts/authContext";
 import { ArrowUpOnSquareIcon } from "@heroicons/react/24/outline";
 

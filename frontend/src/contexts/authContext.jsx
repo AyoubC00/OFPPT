@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import getToken from "../utils/getToken";
 
 const AuthContext = createContext()
 
@@ -29,9 +30,14 @@ export const AuthContextProvider = ({ children }) =>
 
     const logout = async () =>
     {
+        const headers = new Headers({ 
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": getToken()
+        });
         const response = await fetch(`${ import.meta.env.VITE_API }/logout`, {
             method: "POST",
-            headers,
+            headers
         });
         if (response.ok) {
             sessionStorage.removeItem("user");
