@@ -48,8 +48,8 @@ const announcementsReducer = createSlice({
     extraReducers: builder => {
         builder.addCase(fetchAnnouncements.pending, (state) => { state.isLoading = true })
         builder.addCase(fetchAnnouncements.fulfilled, (state, { payload: announcements }) => {
-            state.all = announcements
-            state.pinned = announcements.filter(announcement => announcement.pinned == true)
+            state.all = announcements || []
+            state.pinned = announcements?.filter(announcement => announcement.pinned == true) || []
             state.isLoading = false
         })
         builder.addCase(fetchAnnouncements.rejected, (state, { error }) => { state.error = error.message })
