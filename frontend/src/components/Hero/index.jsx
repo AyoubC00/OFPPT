@@ -1,11 +1,13 @@
-import ofpptFront from "../../assets/ofppt.jpg"
+import ofpptFront from "../../assets/univ.jpg"
+import AutoPlayAnnouncement from "../Announcements/AutoPlayAnnouncement"
 
-const Hero = () =>
-{
+const Hero = () => {
     return (
-        <div className="relative max-h-[35rem] xl:max-h-[45rem] overflow-hidden">
-            <img src={ ofpptFront } alt="OFPPT Front image" className="w-full translate-y-20 lg:-translate-y-10 object-cover" />
-            <div className="bg-blue-gray-800 absolute z-30 top-0 left-0 w-full h-full mix-blend-overlay"></div>
+        <div className="relative min-h-screen overflow-hidden">
+            <img src={ofpptFront} alt="OFPPT Front image" className="w-full block object-cover" />
+            <div className="container absolute bottom-0 left-0 right-0 m-auto -translate-y-full">
+                <AutoPlayAnnouncement />
+            </div>
         </div>
     )
 }
