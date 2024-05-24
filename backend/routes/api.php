@@ -48,6 +48,29 @@ Route::apiResource("filieres", FiliereController::class);
 Route::apiResource("groupes", GroupeController::class);
 Route::apiResource("stagiaires", StagiaireController::class);
 Route::apiResource("clubs", ClubController::class);
+
 Route::get("announcements", [AnnouncementController::class, "index"]);
 Route::get("announcements/{announcement}", [AnnouncementController::class, "show"]);
 Route::apiResource("events", EventController::class);
+
+
+/*
+    Absence Api
+*/
+
+// getting all students 
+Route::get('/abs/all-stagiaires', [Absences::class, "ParPerson"])
+    ->name('absences.all_stagiaires');
+
+// this request is for the first page(contains all states that we need)
+Route::get('/abs/index', [Absences::class, "IndexPage"])
+    ->name('absences.ManyStudentWeek');
+
+// searching group's absents by date Y-M-D
+Route::get('/abs/groups-date', [Absences::class, 'GetGroupsByDate'])
+    ->name('absences.GetGroupsByDate');
+
+// searching for student's absence
+Route::get('/abs/StagiaireAbs', [Absences::class, 'StagiaireAbs'])
+    ->name('absences.StagiaireAbs');
+
