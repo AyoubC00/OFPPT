@@ -19,8 +19,8 @@ class AnnouncementResource extends JsonResource
             "title" => $this->title,
             "description" => $this->description,
             "pinned" => $this->pinned,
-            "created_at" => $this->created_at,
-            "updated_at" => $this->updated_at,
+            "created_at" => $this->created_at->diffForHumans(),
+            "updated_at" => $this->updated_at->diffForHumans(),
             "posted_by" => $this->administrateur->user
         ];
     }

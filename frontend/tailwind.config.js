@@ -5,7 +5,7 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 
 export default withMT({
   content: [
-    ".//*.{html}",
+    ".//*.html",
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
