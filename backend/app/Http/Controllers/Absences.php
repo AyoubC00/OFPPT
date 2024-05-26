@@ -8,22 +8,31 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 // setting static formateur matricule and role
 
 
 class Absences extends Controller
 {
-    public $matricule;
-    public $role;
+    protected $matricule;
+    protected $user;
+    protected $role;
     protected $AbsRepo;
 
     public function __construct(AbsRepositories $AbsRepo)
     {
-        $this->matricule = "FEF3";
-        $this->role = 'formateur';
         $this->AbsRepo = $AbsRepo;
+        /*
+         Varify if the user is Auth
+        */
+        // $this->middleware('auth');
+        $this->user = Auth::user();
+        if ($this->user) {
+            $this->matricule = "FEF3";
+            // $this->matricule = $this->user->matricule;
+            $this->role = $this->user->role;
+        }
     }
 
     public function ParPerson(Request $request)
@@ -119,11 +128,15 @@ class Absences extends Controller
         /*
             Select groups that have been marked absent on this date
         */
-
-        $date = request('date');
-
-        // $date = "2024-03-13";
         try {
+            $validate = $request->validate([
+                'date' => 'required'
+            ]);
+
+            $date = $validate['date'];
+
+            // $date = "2024-03-13";
+
             $Groups = $this->AbsRepo->SqlGroups($this->role, $date, $this->matricule);
             return response()->json(['data' => $Groups]);
         } catch (Exception $e) {
@@ -135,8 +148,11 @@ class Absences extends Controller
         Recherche Stagiaires par cef
     */
     {
-        $cef = request('cef');
         try {
+            $validate = $request->validate([
+                'cef' => 'required'
+            ]);
+            $cef = $validate['cef'];
             $Data = $this->AbsRepo->StagiaireAbs($this->role, $cef, $this->matricule);
             return response()->json(['Stagiaires' => $Data]);
         } catch (Exception $e) {

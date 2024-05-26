@@ -194,7 +194,7 @@ class AbsRepositories
     }
     public function StagiaireAbs($role, $cef, $matricule)
     {
-        if ($role == 'formateur') {
+        if (auth()->role == 'formateur') {
             $result = Absences::select(
                 'users_us.nom as NomFormateur',
                 'users_us.prenom as PrenomFormateur',
