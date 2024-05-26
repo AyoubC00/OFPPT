@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchDemands, updateDemandStatus } from './demandSlice';
+import { fetchDemands, updateDemandStatus } from '../../../features/demandes/DemandesSlice'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RiSearchLine } from 'react-icons/ri';
@@ -17,16 +17,18 @@ const Demandes = () => {
 
     const handleAccept = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Accepted' }));
-        // navigate('/historique')
-    };
-
-    const handleDecline = (id) => {
+        navigate('/historique')
+      };
+      
+      const handleDecline = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Declined' }));
+        navigate('/historique')
     };
 
     const handleReturn = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Waiting Return' }));
-    };
+         navigate('/bac')
+      };
 
      const resetFilters = () => {
     setFilterType('');
@@ -120,8 +122,8 @@ const Demandes = () => {
                         <button onClick={() => handleReturn(demand.id)}>Return</button>
                     ) : (
                         <>
-                            <button onClick={() => handleAccept(demand.id)}>Accept</button>
-                            <button onClick={() => handleDecline(demand.id)}>Decline</button>
+                            <button className="border bg-emerald-400 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => handleAccept(demand.id)}>Accept</button>
+                            <button className="border bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDecline(demand.id)}>Decline</button>
                         </>
                     )}
                  </td>
