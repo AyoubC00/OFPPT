@@ -1,6 +1,5 @@
-import { useAuthContext } from "../../contexts/authContext";
+// import { useAuthContext } from "../../contexts/authContext";
 import AdminDemandes from "./administrateur"
-import React from 'react'
 
 const index = () => {
     // const {user} = useAuthContext()
