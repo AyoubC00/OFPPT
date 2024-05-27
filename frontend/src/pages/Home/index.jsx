@@ -1,4 +1,4 @@
-import { Footer, Event, Inscription, LoginSection, Announcements, Welcome, MyWay } from '../../components'
+import { Footer, Event, Inscription, LoginSection, Announcements, Welcome, MyWay, Hero } from '../../components'
 import { useAuthContext } from '../../contexts/authContext';
 
 function Home() {
@@ -6,12 +6,13 @@ function Home() {
 
   return (
     <>
-      { !token ? <LoginSection /> : <Welcome user={ user }/> }
+      <Hero />
+      {!token ? <LoginSection /> : <Welcome user={user} />}
       <MyWay />
       <Announcements />
-      <Event/>
-      <Inscription/>
-      <Footer/>
+      <Event />
+      <Inscription />
+      <Footer />
     </>
   )
 }
