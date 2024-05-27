@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Demande;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 use \App\Models\Groupe;
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
                 "cin" => "JA67890",
             ],
         );
-        
+
         $stagiaires = User::where('role', 'stagiaire')->get();
         foreach ($stagiaires as $stagiaire) {
             \App\Models\Stagiaire::factory()->create();
@@ -78,5 +79,8 @@ class DatabaseSeeder extends Seeder
         foreach ($quizzes as $quiz) {
             $quiz->questions()->attach($questions->random(rand(5, 10))->pluck('id'));
         }
+
+        // Seed demandes
+        Demande::factory()->create(20);
     }
 }

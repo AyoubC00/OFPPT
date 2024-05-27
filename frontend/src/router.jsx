@@ -4,6 +4,9 @@ import { Home } from "./pages"
 import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
 import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
+import Demandes from "./pages/Demande/administrateur/Demandes";
+import Bac from "./pages/Demande/administrateur/Bac";
+import Historique from "./pages/Demande/administrateur/Historique";
 
 const dashboardRoutes = [
     {
@@ -18,17 +21,17 @@ const dashboardRoutes = [
         children:[{
             path:"",
             name:"Demandes administrateur",
-            element:<h1>demandes</h1>
+            element:<Demandes/>
         },
         {
             path:"bac",
             name:"Demandes administrateur",
-            element:<h1>bac</h1>
+            element:<Bac/>
         },
         {
             path:"historique",
             name:"Demandes administrateur",
-            element:<h1>Historique</h1>
+            element:<Historique/>
         }
     ]
     },

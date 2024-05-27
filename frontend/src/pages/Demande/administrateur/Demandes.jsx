@@ -14,7 +14,11 @@ const Demandes = () => {
     useEffect(() => {
         dispatch(fetchDemands());
     }, [dispatch]);
-
+    
+if (!demands) {
+    // Handle the case where demands is undefined
+    return <div>Loading...</div>;
+  }
     const handleAccept = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Accepted' }));
         navigate('/historique')
@@ -109,7 +113,8 @@ const Demandes = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredDemands.map((demand) => (
+          {
+          filteredDemands.map((demand) => (
             <tr key={demand.id}>
               {demand.status === 'Pending' && (
                 <>
