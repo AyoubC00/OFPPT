@@ -45,7 +45,8 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        $announcement->update($request->all());
+        $updatedAnnouncement = $announcement->update($request->all());
+        return $updatedAnnouncement;
     }
 
     /**

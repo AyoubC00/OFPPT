@@ -1,10 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout, DashboardLayout } from "./pages/Layouts"
 import { Home } from "./pages"
-import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
+import {
+    Announcements,
+    AnnouncementForm,
+    AnnouncementEdit,
+} from "./pages/Announcements";
 import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
 import { Courses } from "./pages/courses/Courses";
+import index from "./pages/Demande";
 
 const dashboardRoutes = [
     {
@@ -30,7 +35,20 @@ const dashboardRoutes = [
     {
         path: "announcements",
         name: "Announcements",
-        element: <AnnouncementForm />,
+        children: [
+            {
+                index: true,
+                element: <Announcements />,
+            },
+            {
+                path: "new",
+                element: <AnnouncementForm />,
+            },
+            {
+                path: "edit/:announcementId",
+                element: <AnnouncementEdit />,
+            },
+        ]
     },
     {
         path: "evenements",

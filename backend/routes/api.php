@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // other routes
     Route::apiResource("demandes", DemandeController::class);
     Route::post("announcements", [AnnouncementController::class, "store"]);
+    Route::put("announcements/{announcement}", [AnnouncementController::class, "update"]);
     Route::post("announcements/{announcement}", [AnnouncementController::class, "destroy"]);
 });
 
