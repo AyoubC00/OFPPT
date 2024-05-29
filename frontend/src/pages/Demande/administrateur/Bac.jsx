@@ -32,7 +32,11 @@ const Bac = () => {
     return isTypeMatch && isDateMatch && isSearchMatch && demand.status === 'Waiting Return';
   });
 
-  if (loading) return <p>Loading...</p>;
+if (loading) return (
+  <div className="flex justify-center items-center h-screen">
+    <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-gray-900"></div>
+  </div>
+);
   if (error) return <p>Error: {error}</p>;
 
   return (

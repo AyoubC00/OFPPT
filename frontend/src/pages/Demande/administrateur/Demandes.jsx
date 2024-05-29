@@ -50,8 +50,12 @@ if (!demands) {
     (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.prenom && demand.stagiaire.user.prenom.toLowerCase().includes(searchQuery.toLowerCase()));
   return isTypeMatch && isDateMatch && isSearchMatch;
 });
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+if (loading) return (
+  <div className="flex justify-center items-center h-screen">
+    <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-gray-900"></div>
+  </div>
+);    
+if (error) return <p>Error: {error}</p>;
   return (
     <>
     <div className="container mx-auto px-4 py-8">
