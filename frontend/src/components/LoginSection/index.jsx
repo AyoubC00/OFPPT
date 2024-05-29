@@ -33,17 +33,17 @@ const LoginSection = () =>
     }
 
     return (
-        <div className="container min-w-full text-blue-gray-900 py-10">
-            <div className="p-4 sm:px-16 xl:w-5/6 xl:mx-auto">
-                <Card className="mx-auto bg-transparent shadow-none md:flex md:flex-row md:gap-16 mb-24">
-                    <div className="hidden sm:flex sm:flex-col sm:w-full lg:w-2/3">
-                        <Typography className="mb-2">L'éducation est la clé d'un meilleur avenir pour tous. Travaillons ensemble pour que chacun ait accès à une éducation de qualité.</Typography>
-                        <div className="my-auto">
-                            <Button variant="text" className="p-1 text-left mb-2 hover:bg-transparent text-sm">Vous avez oublié vos identifiants?</Button>
-                            <Button variant="text" className="p-1 text-left mb-2 hover:bg-transparent text-sm">Vous n'avez pas encore de compte ? Créez-en un maintenant !</Button>
+        <div className="container min-w-full text-blue-gray-900 py-10 w-full min-h-[400px] flex">
+            <div className="p-4 sm:px-16 xl:w-5/6 xl:mx-auto my-auto">
+                <Card className="mx-auto bg-transparent shadow-none md:flex md:flex-row md:justify-between md:gap-16">
+                    <div className="hidden sm:flex sm:flex-col sm:w-full lg:w-2/4 mb-8">
+                        <Typography className="mb-8" color="white">L'éducation est la clé d'un meilleur avenir pour tous. Travaillons ensemble pour que chacun ait accès à une éducation de qualité.</Typography>
+                        <div>
+                            <Button variant="text" color="white" className="p-1 text-left mb-2 hover:bg-transparent text-sm">Vous avez oublié vos identifiants?</Button>
+                            <Button variant="text" color="white" className="p-1 text-left mb-2 hover:bg-transparent text-sm">Vous n'avez pas encore de compte ? Créez-en un maintenant !</Button>
                         </div>
                     </div>
-                    <Card className="flex flex-col gap-3 lg:w-1/3 p-8 md:p-6 shadow-lg">
+                    <Card className="flex flex-col gap-3 lg:w-1/3 p-8 md:p-6 shadow-lg md:max-w-[300px]">
                         {
                             errors.message ?
                             <Typography variant="small" color="red" className="text-sm mb-4">
