@@ -41,35 +41,40 @@ if (loading) return (
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-6">Bac - Waiting Return</h1>
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-        <div className="mb-4 sm:mb-0">
-          <label htmlFor="filterType" className="block mb-1">Filter by Type:</label>
-          <select
-            id="filterType"
-            value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
-            className="border rounded-md px-2 py-1"
-          >
-            <option value="">All</option>
-            <option value="type2">Certificat du suivi de formation</option>
-            <option value="type1">Retirer tamporeirement du bac</option>
-            <option value="type3">Retirer definitement du bac</option>
-          </select>
-          <button onClick={resetFilters} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">Reset</button>
-        </div>
-        <div className="mb-4 sm:mb-0">
-          <label htmlFor="filterDate" className="block mb-1">Filter by Date:</label>
+      <h1 className="text-3xl font-semibold  my-8">Bac - Waiting Return</h1>
+<div className="flex flex-col md:flex-row justify-between items-center mb-8">
+ 
+        <div className="mb-4 md:mb-0">
+    <label htmlFor="filterType" className="block mb-1 text-sm font-medium text-gray-700">Filter by Type:</label>
+    <div className="flex items-center">
+    <select
+      id="filterType"
+      value={filterType}
+      onChange={(e) => setFilterType(e.target.value)}
+      className="border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-emerald-600 focus:border-emerald-600 text-sm py-2 pr-8 pl-4 w-full md:w-auto" // Slightly reduced padding and font size
+  >
+      <option>All</option>
+      <option>Certificat du suivi de formation</option>
+      <option>Retirer tamporeirement du bac</option>
+      <option>Retirer definitement du bac</option>
+  </select>
+ 
+        <button onClick={resetFilters} className="ml-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-emerald-600 focus:border-emerald-600">Reset</button>
+    </div>
+</div>
+       
+        <div className="mb-4 md:mb-0">
+          <label htmlFor="filterDate" className="block mb-1 text-sm font-medium text-gray-700">Filter by Date:</label>
           <input
             id="filterDate"
             type="date"
             value={filterDate}
             onChange={(e) => setFilterDate(e.target.value)}
-            className="border rounded-md px-2 py-1"
+            className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm"
           />
         </div>
-        <div className="flex items-center">
-          <label htmlFor="searchQuery" className="block mb-1">Search:</label>
+ 
+        <div className="flex items-center justify-end mt-4 md:mt-0">
           <div className="relative">
             <input
               id="searchQuery"
@@ -77,9 +82,11 @@ if (loading) return (
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name"
-              className="border rounded-md px-2 py-1 pl-8 pr-3"
+              className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm pl-10"
             />
-            <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
+            <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <RiSearchLine className="h-5 w-5 text-gray-500" />
+            </span>
           </div>
         </div>
       </div>

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDemands } from "../../../features/demandes/DemandesSlice";
 import { RiSearchLine } from 'react-icons/ri';
+// import Typewriter from 'typewriter-effect';
+
 
 const Historique = () => {
   const dispatch = useDispatch();
@@ -39,9 +41,18 @@ if (loading) return (
 );
   if (error) return <p>Error: {error}</p>;
 
-  return (
+   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold mb-6">Historiques</h1>
+      {/* <div className="flex-1 bg-center h-full ">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("L'Historique")
+              .pauseFor(1000)
+              .start();
+          }}
+        />
+      </div> */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
         <div className="mb-4 sm:mb-0">
           <label htmlFor="filterType" className="block mb-1">Filter by Type:</label>
@@ -69,7 +80,6 @@ if (loading) return (
           />
         </div>
         <div className="flex items-center">
-          <label htmlFor="searchQuery" className="block mb-1">Search:</label>
           <div className="relative">
             <input
               id="searchQuery"
@@ -109,4 +119,4 @@ if (loading) return (
   );
 };
 
-export default Historique ;
+export default Historique;

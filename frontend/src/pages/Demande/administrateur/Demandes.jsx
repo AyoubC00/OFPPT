@@ -59,6 +59,7 @@ if (error) return <p>Error: {error}</p>;
   return (
     <>
     <div className="container mx-auto px-4 py-8">
+      
       {/* Filtering and Search UI */}
       <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
         {/* Filter by Type */}
@@ -90,7 +91,6 @@ if (error) return <p>Error: {error}</p>;
         </div>
         {/* Search */}
         <div className="flex items-center">
-          <label htmlFor="searchQuery" className="block mb-1">Search : </label>
           <div className="relative">
             <input
               id="searchQuery"
@@ -104,36 +104,40 @@ if (error) return <p>Error: {error}</p>;
           </div>
         </div>
       </div>
-
-      {/* Demand List Table */}
-      <table className="w-full border-collapse border">
-        <thead>
+<div className='overflow-x-auto mt-8'>
+      <table className="min-w-full divide-gray-200">
+        <thead className='bg-white'>
           <tr>
-            <th className="border px-4 py-2">ID</th>
-            <th className="border px-4 py-2">Stagiaire</th>
-            <th className="border px-4 py-2">CEF</th>
-            <th className="border px-4 py-2">Type</th>
-            <th className="border px-4 py-2">Action</th>
+            <th 
+scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+            <th 
+scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stagiaire</th>
+            <th 
+scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CEF</th>
+            <th 
+scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+            <th 
+scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white divide-y divide-gray-200">
           {
           filteredDemands.map((demand) => (
             <tr key={demand.id}>
               {demand.status === 'Pending' && (
                 <>
-                 <td className="border px-4 py-2">{demand.id}</td>
-                 <td className="border px-4 py-2">{demand.stagiaire.user.nom} {demand.stagiaire.user.prenom}</td>
-                 <td className="border px-4 py-2">{demand.stagiaire.cef}</td>
-                 <td className="border px-4 py-2">{demand.type}</td>
-                 <td className="border px-4 py-2">
+                 <td className="px-6 py-4 whitespace-nowrap">{demand.id}</td>
+                 <td className="px-6 py-4 whitespace-nowrap">{demand.stagiaire.user.nom} {demand.stagiaire.user.prenom}</td>
+                 <td className="px-6 py-4 whitespace-nowrap">{demand.stagiaire.cef}</td>
+                 <td className="px-6 py-4 whitespace-nowrap">{demand.type}</td>
+                 <td className="px-6 py-4 whitespace-nowrap">
                     {demand.type === 'type1' ? (
-                        <><button onClick={() => handleReturn(demand.id)} className="border bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2">Return</button>
+                        <><button onClick={() => handleReturn(demand.id)} className="border bg-blue-gray-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2">Return</button>
                         <button className="border bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDecline(demand.id)}>Decline</button>
                         </>
                     ) : (
                         <>
-                            <button className="border bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => handleAccept(demand.id)}>Accept</button>
+                            <button className="border bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => handleAccept(demand.id)}>Accept</button>
                             <button className="border bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDecline(demand.id)}>Decline</button>
                         </>
                     )}
@@ -144,6 +148,7 @@ if (error) return <p>Error: {error}</p>;
           ))}
         </tbody>
       </table>
+      </div>
     </div>
     </>
   )
