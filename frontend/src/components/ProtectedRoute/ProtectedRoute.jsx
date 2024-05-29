@@ -4,16 +4,20 @@ import { useAuthContext } from '../../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
 
 
-function ProtectedRoute({ children, ...roles }) {
+function ProtectedRoute({ children, roles }) {
   const auth = useAuthContext();
   const navigate = useNavigate();
 
+  
   React.useEffect(() => {
-    if (!auth?.user?.user || !roles.includes(auth.user.user.role)) {
-      navigate('/', { replace: true });
+    if (!auth?.user?.token) {
+      if(!roles.includes(auth?.user?.user?.role)){
+        navigate('/', { replace: true });
+
+      }
     }
 
-  }, [navigate, auth, roles])
+  }, [auth, navigate, roles])
 
   return auth ? <div>
     {children}

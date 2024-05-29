@@ -6,6 +6,7 @@ import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
 import { Courses } from "./pages/courses/Courses";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthContextProvider } from "./contexts/authContext";
 
 
 
@@ -13,7 +14,9 @@ const dashboardRoutes = [
     {
         path: "/dashboard",
         name: "Dashboard",
-        element: <ProtectedRoute roles="admin" >this a protected route</ProtectedRoute>
+        element: <AuthContextProvider>
+            <ProtectedRoute roles={["administrateur"]} >this a protected route</ProtectedRoute>
+        </AuthContextProvider>
     },
     {
         path: "demandes",
@@ -59,7 +62,9 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <ProtectedRoute roles={['stagiare, formateur, adminstrateur']} ><DashboardLayout /></ProtectedRoute>,
+        element: <AuthContextProvider>
+
+        <ProtectedRoute roles={['stagiare, formateur, administrateur']} ><DashboardLayout /></ProtectedRoute></AuthContextProvider>,
         children: dashboardRoutes
     }
 ])
