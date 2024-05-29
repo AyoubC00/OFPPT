@@ -54,6 +54,7 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-        $announcement->delete();
+        $deletedAnnouncement = $announcement->delete();
+        return $deletedAnnouncement;
     }
 }

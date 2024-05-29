@@ -28,7 +28,7 @@ const announcementsReducer = createSlice({
         removeAnnouncement(state, { payload: { id, isPinned } })
         {
             if (isPinned) state.pinned = state.pinned?.filter(announcement => announcement.id !== id)
-            else state.pinned = state.all?.filter(announcement => announcement.id !== id)
+            else state.all = state.all?.filter(announcement => announcement.id !== id)
         },
         nextPage ({ all, config})
         {

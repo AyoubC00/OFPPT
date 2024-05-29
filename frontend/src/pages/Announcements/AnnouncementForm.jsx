@@ -27,7 +27,6 @@ const AnnouncementForm = () => {
   {
     const response = await request("announcements", "POST", announcement);
     navigate(-1);
-        
   }
 
  return (
