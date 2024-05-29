@@ -5,12 +5,15 @@ import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
 import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
 import { Courses } from "./pages/courses/Courses";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+
 
 const dashboardRoutes = [
     {
         path: "/dashboard",
         name: "Dashboard",
-        element: "statistique if admin else  dakchi dyal stagiare"
+        element: <ProtectedRoute roles="admin" >this a protected route</ProtectedRoute>
     },
     {
         path: "demandes",
@@ -20,7 +23,7 @@ const dashboardRoutes = [
     {
         path: "courses",
         name: "Courses",
-        element: <Courses/>
+        element: <Courses />
     },
     {
         path: "quizzes",
@@ -56,10 +59,10 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout />,
+        element: <ProtectedRoute roles={['stagiare, formateur, adminstrateur']} ><DashboardLayout /></ProtectedRoute>,
         children: dashboardRoutes
     }
 ])
 
 export default router
-export {dashboardRoutes}
+export { dashboardRoutes }

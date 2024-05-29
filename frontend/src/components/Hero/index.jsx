@@ -1,4 +1,3 @@
-import { Typography } from "@material-tailwind/react";
 import ofpptFront from "../../assets/univ.jpg"
 import { useAuthContext } from '../../contexts/authContext';
 import LoginSection from "../LoginSection";
