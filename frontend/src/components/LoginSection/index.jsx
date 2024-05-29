@@ -33,7 +33,7 @@ const LoginSection = () =>
     }
 
     return (
-        <div className="container min-w-full text-blue-gray-900 py-10 w-full min-h-[400px] flex">
+        <div className="container min-w-full text-blue-gray-900 py-10 w-full min-h-[400px] md:flex ">
             <div className="p-4 sm:px-16 xl:w-5/6 xl:mx-auto my-auto">
                 <Card className="mx-auto bg-transparent shadow-none md:flex md:flex-row md:justify-between md:gap-16">
                     <div className="hidden sm:flex sm:flex-col sm:w-full lg:w-2/4 mb-8">
