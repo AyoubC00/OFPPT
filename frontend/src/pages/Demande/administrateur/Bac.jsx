@@ -1,14 +1,84 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { fetchDemands } from '../../../features/demandes/DemandesSlice';
+import { RiSearchLine } from 'react-icons/ri';
 
 const Bac = () => {
-  const demands = useSelector((state) => state.demand.demands);
+  const dispatch = useDispatch();
+  const { demands, loading, error } = useSelector((state) => state.demand);
 
-  // Filter demands of type "retirer tamporeirement du bac" with status "Waiting Return"
-  const waitingReturnDemands = demands.filter((demand) => demand.type === 'type1' && demand.status === 'Waiting Return');
+  const [filterType, setFilterType] = useState('');
+  const [filterDate, setFilterDate] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchDemands());
+  }, [dispatch]);
+
+  const resetFilters = () => {
+    setFilterType('');
+    setFilterDate('');
+    setSearchQuery('');
+  };
+
+  const filteredDemands = demands.filter((demand) => {
+    const isTypeMatch = filterType === '' || demand.type === filterType;
+    const isDateMatch = filterDate === '' || (demand.created_at && demand.created_at.includes(filterDate));
+    const isSearchMatch =
+      searchQuery === '' ||
+      (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.nom && demand.stagiaire.user.nom.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.cin && demand.stagiaire.user.cin.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.prenom && demand.stagiaire.user.prenom.toLowerCase().includes(searchQuery.toLowerCase()));
+    return isTypeMatch && isDateMatch && isSearchMatch && demand.status === 'Waiting Return';
+  });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-semibold mb-6">Bac - Waiting Return</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <div className="mb-4 sm:mb-0">
+          <label htmlFor="filterType" className="block mb-1">Filter by Type:</label>
+          <select
+            id="filterType"
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+            className="border rounded-md px-2 py-1"
+          >
+            <option value="">All</option>
+            <option value="type2">Certificat du suivi de formation</option>
+            <option value="type1">Retirer tamporeirement du bac</option>
+            <option value="type3">Retirer definitement du bac</option>
+          </select>
+          <button onClick={resetFilters} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">Reset</button>
+        </div>
+        <div className="mb-4 sm:mb-0">
+          <label htmlFor="filterDate" className="block mb-1">Filter by Date:</label>
+          <input
+            id="filterDate"
+            type="date"
+            value={filterDate}
+            onChange={(e) => setFilterDate(e.target.value)}
+            className="border rounded-md px-2 py-1"
+          />
+        </div>
+        <div className="flex items-center">
+          <label htmlFor="searchQuery" className="block mb-1">Search:</label>
+          <div className="relative">
+            <input
+              id="searchQuery"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by name"
+              className="border rounded-md px-2 py-1 pl-8 pr-3"
+            />
+            <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
+          </div>
+        </div>
+      </div>
       <table className="w-full border-collapse border">
         <thead>
           <tr>
@@ -20,7 +90,7 @@ const Bac = () => {
           </tr>
         </thead>
         <tbody>
-          {waitingReturnDemands.map((demand) => (
+          {filteredDemands.map((demand) => (
             <tr key={demand.id}>
               <td className="border px-4 py-2">{demand.id}</td>
               <td className="border px-4 py-2">{demand.stagiaire?.user?.nom} {demand.stagiaire?.user?.prenom}</td>

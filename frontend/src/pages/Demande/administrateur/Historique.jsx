@@ -1,17 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchDemands } from "../../../features/demandes/DemandesSlice";
+import { RiSearchLine } from 'react-icons/ri';
 
 const Historique = () => {
   const dispatch = useDispatch();
   const { demands, loading, error } = useSelector((state) => state.demand);
 
+  const [filterType, setFilterType] = useState('');
+  const [filterDate, setFilterDate] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     dispatch(fetchDemands());
   }, [dispatch]);
 
-  // Filter demands that are accepted, declined, or returned
-  const filteredDemands = demands.filter((demand) => ['Accepted', 'Declined', 'Returned'].includes(demand.status));
+  const resetFilters = () => {
+    setFilterType('');
+    setFilterDate('');
+    setSearchQuery('');
+  };
+
+  const filteredDemands = demands.filter((demand) => {
+    const isTypeMatch = filterType === '' || demand.type === filterType;
+    const isDateMatch = filterDate === '' || (demand.created_at && demand.created_at.includes(filterDate));
+    const isSearchMatch =
+      searchQuery === '' ||
+      (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.nom && demand.stagiaire.user.nom.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.cin && demand.stagiaire.user.cin.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (demand.stagiaire && demand.stagiaire.user && demand.stagiaire.user.prenom && demand.stagiaire.user.prenom.toLowerCase().includes(searchQuery.toLowerCase()));
+    return isTypeMatch && isDateMatch && isSearchMatch && ['Accepted', 'Declined', 'Returned'].includes(demand.status);
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -19,6 +38,47 @@ const Historique = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-semibold mb-6">Historiques</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <div className="mb-4 sm:mb-0">
+          <label htmlFor="filterType" className="block mb-1">Filter by Type:</label>
+          <select
+            id="filterType"
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+            className="border rounded-md px-2 py-1"
+          >
+            <option value="">All</option>
+            <option value="type2">Certificat du suivi de formation</option>
+            <option value="type1">Retirer tamporeirement du bac</option>
+            <option value="type3">Retirer definitement du bac</option>
+          </select>
+          <button onClick={resetFilters} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">Reset</button>
+        </div>
+        <div className="mb-4 sm:mb-0">
+          <label htmlFor="filterDate" className="block mb-1">Filter by Date:</label>
+          <input
+            id="filterDate"
+            type="date"
+            value={filterDate}
+            onChange={(e) => setFilterDate(e.target.value)}
+            className="border rounded-md px-2 py-1"
+          />
+        </div>
+        <div className="flex items-center">
+          <label htmlFor="searchQuery" className="block mb-1">Search:</label>
+          <div className="relative">
+            <input
+              id="searchQuery"
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by name"
+              className="border rounded-md px-2 py-1 pl-8 pr-3"
+            />
+            <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
+          </div>
+        </div>
+      </div>
       <table className="w-full border-collapse border">
         <thead>
           <tr>
@@ -45,4 +105,4 @@ const Historique = () => {
   );
 };
 
-export default Historique;
+export default Historique ;
