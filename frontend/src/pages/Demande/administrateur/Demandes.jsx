@@ -21,17 +21,17 @@ if (!demands) {
   }
     const handleAccept = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Accepted' }));
-        navigate('/historique')
+        navigate('/dashboard/demandes/historique')
       };
       
       const handleDecline = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Declined' }));
-        navigate('/historique')
+        navigate('/dashboard/demandes/historique')
     };
 
     const handleReturn = (id) => {
         dispatch(updateDemandStatus({ id, status: 'Waiting Return' }));
-         navigate('/bac')
+         navigate('/dashboard/demandes/bac')
       };
 
      const resetFilters = () => {
@@ -124,10 +124,12 @@ if (!demands) {
                  <td className="border px-4 py-2">{demand.type}</td>
                  <td className="border px-4 py-2">
                     {demand.type === 'type1' ? (
-                        <button onClick={() => handleReturn(demand.id)}>Return</button>
+                        <><button onClick={() => handleReturn(demand.id)} className="border bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2">Return</button>
+                        <button className="border bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDecline(demand.id)}>Decline</button>
+                        </>
                     ) : (
                         <>
-                            <button className="border bg-emerald-400 hover:bg-emerald-500 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => handleAccept(demand.id)}>Accept</button>
+                            <button className="border bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2" onClick={() => handleAccept(demand.id)}>Accept</button>
                             <button className="border bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDecline(demand.id)}>Decline</button>
                         </>
                     )}

@@ -24,12 +24,12 @@ const dashboardRoutes = [
             element:<Demandes/>
         },
         {
-            path:"bac",
+            path:"/dashboard/demandes/bac",
             name:"Demandes administrateur",
             element:<Bac/>
         },
         {
-            path:"historique",
+            path:"/dashboard/demandes/historique",
             name:"Demandes administrateur",
             element:<Historique/>
         }

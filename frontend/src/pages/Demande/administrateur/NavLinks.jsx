@@ -11,12 +11,12 @@ const NavLinks = () => {
           </Link>
         </div>
         <div className="group hover:scale-105 hover:shadow-lg hover:bg-sky-300 transform transition duration-300 ease-in-out bg-slate-400 rounded-lg overflow-hidden">
-          <Link to="bac" className="block text-center py-4 text-4caf50 font-semibold hover:text-white">
+          <Link to="/dashboard/demandes/bac" className="block text-center py-4 text-4caf50 font-semibold hover:text-white">
             Bac
           </Link>
         </div>
         <div className="group hover:scale-105 hover:shadow-lg hover:bg-sky-300 transform transition duration-300 ease-in-out bg-slate-400 rounded-lg overflow-hidden">
-          <Link to="historique" className="block text-center py-4 text-4caf50 font-semibold hover:text-white">
+          <Link to="/dashboard/demandes/historique" className="block text-center py-4 text-4caf50 font-semibold hover:text-white">
             Historique
           </Link>
         </div>

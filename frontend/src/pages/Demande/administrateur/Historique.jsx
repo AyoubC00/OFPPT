@@ -1,19 +1,20 @@
 import { useEffect } from "react";
-import { fetchDemands } from '../../../features/demandes/DemandesSlice'
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchDemands } from "../../../features/demandes/DemandesSlice";
+
 const Historique = () => {
- const dispatch = useDispatch();
-    const { demands, loading, error } = useSelector(state => state.demand);
+  const dispatch = useDispatch();
+  const { demands, loading, error } = useSelector((state) => state.demand);
 
-    useEffect(() => {
-        dispatch(fetchDemands());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchDemands());
+  }, [dispatch]);
 
-    // Filter demands that are accepted, declined, or returned
-    const filteredDemands = demands.filter((demand) => ['Accepted', 'Declined', 'Returned'].includes(demand.status));
+  // Filter demands that are accepted, declined, or returned
+  const filteredDemands = demands.filter((demand) => ['Accepted', 'Declined', 'Returned'].includes(demand.status));
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="container mx-auto px-4 py-8">
