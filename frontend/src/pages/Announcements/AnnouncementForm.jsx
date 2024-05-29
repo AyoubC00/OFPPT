@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
-// import Editor from "../../components/Editor/Editor";
+import Editor from "../../components/Editor/Editor";
 
 export const AnnouncementForm = () => {
 
@@ -53,6 +53,7 @@ export const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
+
             {/* <Textarea placeholder="description de l'annonce"  
               name="description"
               value={ announcement.description }
@@ -61,6 +62,10 @@ export const AnnouncementForm = () => {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}/> */}
+
+            <Editor />
+
+            
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
