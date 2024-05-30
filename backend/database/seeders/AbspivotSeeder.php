@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Stagiaire;
+use App\Models\Abspivot;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StagiaireSeeder extends Seeder
+class AbspivotSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Stagiaire::factory(1000)->create();
+        \App\Models\Abspivot::factory(20)->create();
     }
 }

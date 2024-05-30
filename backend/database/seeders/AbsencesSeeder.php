@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Stagiaire;
+use App\Models\Absences;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class StagiaireSeeder extends Seeder
+class AbsencesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Stagiaire::factory(1000)->create();
+        Absences::factory(40)->create();
     }
 }

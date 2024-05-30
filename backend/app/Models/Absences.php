@@ -10,16 +10,18 @@ class Absences extends Model
 {
     use HasFactory;
 
-    protected $table = "absences";
-    protected $fillable = ["dateAbsences", "matricule", "cef", "heureDebut", "heureFin"];
+    protected $table = "absence";
+    protected $fillable = ['stagiaire_id', 'abspivots_id', 'justified'];
 
-    public function formateur(): BelongsTo
-    {
-        return $this->belongsTo(Formateur::class, 'matricule', 'matricule');
-    }
+    public $timestamps = false;
 
-    public function stagiaire(): BelongsTo
-    {
-        return $this->belongsTo(Stagiaire::class, 'cef', 'cef');
-    }
+    // public function formateur(): BelongsTo
+    // {
+    //     return $this->belongsTo(Formateur::class, 'matricule', 'matricule');
+    // }
+
+    // public function stagiaire(): BelongsTo
+    // {
+    //     return $this->belongsTo(Stagiaire::class, 'cef', 'cef');
+    // }
 }
