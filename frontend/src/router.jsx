@@ -4,6 +4,7 @@ import { Home } from "./pages"
 import { AnnouncementForm } from "./pages/Announcements/AnnouncementForm";
 import { EvenementsForm } from "./pages/Evenements/EvenementsForm";
 import Demande from "./pages/Demande"
+import Absence from "./pages/absence/abasenceTable.jsx";
 import { Courses } from "./pages/courses/Courses";
 
 const dashboardRoutes = [
@@ -20,7 +21,7 @@ const dashboardRoutes = [
     {
         path: "courses",
         name: "Courses",
-        element: <Courses/>
+        element: <Courses />
     },
     {
         path: "quizzes",
@@ -41,6 +42,11 @@ const dashboardRoutes = [
         path: "emploi_de_temps",
         name: "Emploi de temps",
         element: <h1>Emploi de temps</h1>,
+    },
+    {
+        path: "absence",
+        name: "Absence",
+        element: <Absence />,
     }
 ]
 const router = createBrowserRouter([
@@ -62,4 +68,4 @@ const router = createBrowserRouter([
 ])
 
 export default router
-export {dashboardRoutes}
+export { dashboardRoutes }
