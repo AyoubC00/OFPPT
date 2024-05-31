@@ -80,3 +80,5 @@ Route::post('/abs/stagiaires-absences', [AbsenceController::class, 'StudentAbs']
     ->name('abs.stagiaires');
 Route::post('/abs/stagiaires', [AbsenceController::class, 'Stagiaires'])
     ->name('abs.all-stagiaires');
+Route::post('/abs/timeAvailabe', [AbsenceController::class, 'timeAvailable'])
+    ->name('abs.TimeAvailable');

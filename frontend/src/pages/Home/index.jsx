@@ -1,17 +1,15 @@
-import { Footer, Event, Inscription, LoginSection, Announcements, Welcome, MyWay } from '../../components'
-import { useAuthContext } from '../../contexts/authContext';
+import { Footer, Event, Inscription, LoginSection, Announcements, Welcome, MyWay, Hero } from '../../components'
 
 function Home() {
-  const { user: { token, user } } = useAuthContext();
 
   return (
     <>
-      { !token ? <LoginSection /> : <Welcome user={ user }/> }
+      <Hero />
       <MyWay />
       <Announcements />
-      <Event/>
-      <Inscription/>
-      <Footer/>
+      <Event />
+      <Inscription />
+      <Footer />
     </>
   )
 }
