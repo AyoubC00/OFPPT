@@ -54,31 +54,18 @@ Route::get("announcements/{announcement}", [AnnouncementController::class, "show
 Route::apiResource("events", EventController::class);
 
 
-/*
-    Absence Api
-*/
-
-// // getting all students
-// Route::get('/abs/all-stagiaires', [Absences::class, "ParPerson"])
-//     ->name('absences.all_stagiaires');
-
-// // this request is for the first page(contains all states that we need)
-// Route::get('/abs/index', [Absences::class, "IndexPage"])
-//     ->name('absences.ManyStudentWeek');
-
-// // searching group's absents by date Y-M-D
-// Route::get('/abs/groups-date', [Absences::class, 'GetGroupsByDate'])
-//     ->name('absences.GetGroupsByDate');
-
-// // searching for student's absence
-// Route::get('/abs/StagiaireAbs', [Absences::class, 'StagiaireAbs'])
-//     ->name('absences.StagiaireAbs');
-
-Route::get('/abs/filiere', [AbsenceController::class, 'index']);
-Route::post('/abs/time-range', [AbsenceController::class, 'ListAbsence']);
-Route::post('/abs/stagiaires-absences', [AbsenceController::class, 'StudentAbs'])
-    ->name('abs.stagiaires');
-Route::post('/abs/stagiaires', [AbsenceController::class, 'Stagiaires'])
-    ->name('abs.all-stagiaires');
-Route::post('/abs/timeAvailabe', [AbsenceController::class, 'timeAvailable'])
-    ->name('abs.TimeAvailable');
+/**
+ * Absence Routes
+ */
+Route::prefix('/abs')->group(function () {
+    Route::get('/filiere', [AbsenceController::class, 'index']);
+    Route::post('/time-range', [AbsenceController::class, 'ListAbsence']);
+    Route::post('/stagiaires-absences', [AbsenceController::class, 'StudentAbs'])
+        ->name('abs.stagiaires');
+    Route::post('/stagiaires', [AbsenceController::class, 'Stagiaires'])
+        ->name('abs.all-stagiaires');
+    Route::post('/timeAvailabe', [AbsenceController::class, 'timeAvailable'])
+        ->name('abs.TimeAvailable');
+    Route::post('/register-absence', [AbsenceController::class, 'RegisterAbsence'])
+        ->name('abs.register-absence');
+});
