@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AnnouncementCollection;
+use App\Http\Requests\StoreAnnouncementRequest;
+use App\Http\Requests\UpdateAnnouncementRequest;
 use App\Http\Resources\AnnouncementResource;
 use App\Models\Administrateur;
 use App\Models\Announcement;
@@ -16,20 +17,19 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        return new AnnouncementCollection(Announcement::all());
+        $announcements = Announcement::with('administrateur.user')->get();
+        return AnnouncementResource::collection($announcements);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreAnnouncementRequest $request)
     {
         $user = Auth::user();
-        if ($user->role === "administrateur")
-        {
-            $administrateur = Administrateur::where("user_id", $user->id)->first();
-            return $administrateur->announcements()->create($request->all());
-        }
+        $administrateur = Administrateur::where("user_id", $user->id)->first();
+        $announcement = $administrateur->announcements()->create($request->all());
+        return new AnnouncementResource($announcement);
     }
 
     /**
@@ -43,10 +43,10 @@ class AnnouncementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(UpdateAnnouncementRequest $request, Announcement $announcement)
     {
         $updatedAnnouncement = $announcement->update($request->all());
-        return $updatedAnnouncement;
+        return new AnnouncementResource($updatedAnnouncement);
     }
 
     /**
@@ -54,7 +54,11 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-        $deletedAnnouncement = $announcement->delete();
-        return $deletedAnnouncement;
+        $user = Auth::user();
+        if($user->role === "administrateur"){
+            $deletedAnnouncement = $announcement->delete();
+            return response()->json($deletedAnnouncement);
+        }
+        else abort(403, "You are not authorized to perform this action.");
     }
 }

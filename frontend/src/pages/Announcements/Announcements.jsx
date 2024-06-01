@@ -32,7 +32,7 @@ const Announcements = () => {
                     <Link to='new'><Button  className="mt-6 my-3" color="blue-gray">Add announcement</Button></Link>
                 </span>
                 <div className="flex flex-col">
-                    <div className="overflow-y-auto h-fit max-h-674 mb-16 bg-white lg:mb-0 lg:col-span-2 row-start-2 row-end-3">
+                    <div className="overflow-y-auto h-96 max-h-674 mb-16 bg-white lg:mb-0 lg:col-span-2 row-start-2 row-end-3">
                         <Typography variant="h4" className="bg-white p-6 sticky top-0 z-20 shadow-sm">Pinned</Typography>
                         {
                             pinned.length ?
@@ -46,7 +46,7 @@ const Announcements = () => {
                         <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-1 my-5 justify-items-center">
                             {
                                 announcements.length ?
-                                announcements.filter(announcement => !announcement.pinned).map(announcement => 
+                                announcements.map(announcement => 
                                     <AnnouncementCard key={ announcement.id } { ...announcement }/> 
                                 ) :
                                 <NoResult /> 

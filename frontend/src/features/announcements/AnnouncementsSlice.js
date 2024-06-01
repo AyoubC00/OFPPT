@@ -28,11 +28,12 @@ const announcementsReducer = createSlice({
         removeAnnouncement(state, { payload: { id, isPinned } })
         {
             if (isPinned) state.pinned = state.pinned?.filter(announcement => announcement.id !== id)
-            else state.all = state.all?.filter(announcement => announcement.id !== id)
+            state.all = state.all?.filter(announcement => announcement.id !== id)
+            if(state.config.currentPage > Math.ceil(state.all.length / 3)) state.config.currentPage = Math.ceil(state.all.length / 3) || 1
         },
         nextPage ({ all, config})
         {
-            if (all.slice(config.currentPage - 1).length)
+            if (config.currentPage < Math.ceil(all.length / 3))
             config.currentPage += 1;
         },
         previousPage({ config })

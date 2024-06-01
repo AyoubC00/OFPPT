@@ -26,6 +26,7 @@ const AnnouncementForm = () => {
   const handleCreate = async () =>
   {
     const response = await request("announcements", "POST", announcement);
+    console.log(response);
     navigate(-1);
   }
 

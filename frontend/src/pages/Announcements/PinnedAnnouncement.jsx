@@ -5,10 +5,19 @@ import {
     BsPinAngleFill,
  } from "react-icons/bs"
 import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux";
+
+import request from "../../utils/request";
+import { removeAnnouncement } from "../../features/announcements/AnnouncementsSlice";
 import minimizeText from "../../utils/minimizeText"
 
-const PinnedAnnouncement = ({ id, title }) => 
+const PinnedAnnouncement = ({ id, title, pinned }) => 
 {
+    const dispatch = useDispatch();
+    const deleteHandler = async() => {
+        const data = await request(`announcements/${id}`, "DELETE");  
+        if(data.ok) dispatch(removeAnnouncement({id, isPinned : pinned}));
+    }
     return (
         <div>
             <Card className="rounded-none shadow-none">
@@ -19,7 +28,7 @@ const PinnedAnnouncement = ({ id, title }) =>
                     </div>
                     <div className="flex gap-5">
                         <Link to={`edit/${id}`}><BsFillPencilFill className="text-2xl text-blue-gray-600" /></Link>
-                        <BsFillTrash3Fill className="text-2xl text-red-600" />
+                        <BsFillTrash3Fill onClick={deleteHandler} className="text-2xl text-red-600 cursor-pointer" />
                     </div>
                 </CardBody>
             </Card>

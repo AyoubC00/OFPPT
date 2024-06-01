@@ -9,18 +9,18 @@ import {
     BsFillTrash3Fill,
     BsFillPencilFill,
  } from "react-icons/bs"
+ import { Link } from "react-router-dom";
+ import { useDispatch } from "react-redux";
+
  import { removeAnnouncement } from "../../features/announcements/AnnouncementsSlice";
 import minimizeText from "../../utils/minimizeText";
-import { Link } from "react-router-dom";
 import request from "../../utils/request";
-import { useDispatch } from "react-redux";
    
 const AnnouncementCard = ({ id, title, datetime, description, pinned }) => {
-    console.log(pinned);
     const dispatch = useDispatch();
     const deleteHandler = async() => {
-        const response = await request(`announcements/${id}`, "DELETE");  
-        dispatch(removeAnnouncement({id, pinned}))
+        const data = await request(`announcements/${id}`, "DELETE");  
+        if(data.ok) dispatch(removeAnnouncement({id, isPinned : pinned}));
     }
 
     return (
