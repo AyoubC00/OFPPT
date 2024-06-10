@@ -10,13 +10,16 @@ import {
 } from "@material-tailwind/react";
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
-import { useNavigate } from "react-router-dom";
-// import Editor from "../../components/Editor/Editor";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const AnnouncementForm = () => {
+const AnnouncementEdit = () => {
 
   const navigate = useNavigate();
-  const [announcement, setAnnouncement] = useState({ title: '', description: '', displayDate: '', pinned: false });
+  const { announcementId } = useParams();
+  const announcements = useSelector(state => state.announcements);
+  const { title, description, pinned } = announcements.all.filter(ann => ann.id === parseInt(announcementId))[0];
+  const [announcement, setAnnouncement] = useState({ title: title, description: description, displayDate: "", pinned: pinned });
   const { user } = useAuthContext();
   const handleChange = ({ target: { name, value } }) => 
   {
@@ -24,11 +27,10 @@ const AnnouncementForm = () => {
     else setAnnouncement(prev => ({ ...prev, [name]: value }));
   }
 
-  const handleCreate = async () =>
+  const handleUpdate = async () =>
   {
-    const response = await request("announcements", "POST", announcement);
-    console.log(response);
-    navigate(-1);
+    const response = await request(`announcements/${announcementId}`, "PUT", announcement);
+    navigate(-1);  
   }
 
  return (
@@ -57,14 +59,14 @@ const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
-            {/* <Textarea placeholder="description de l'annonce"  
+            <Textarea placeholder="description de l'annonce"  
               name="description"
               value={ announcement.description }
               onChange={ handleChange }
               className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
-              }}/> */}
+              }}/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
@@ -82,8 +84,8 @@ const AnnouncementForm = () => {
             />
             <Switch label="Pin" name="pinned" value='' checked={ announcement.pinned ? true : false } onChange={ handleChange } className="text-blue-gray-500"/>
           </div>
-          <Button className="mt-6" color="blue-gray" fullWidth onClick={ handleCreate }>
-            Ajouter l'annonce
+          <Button className="mt-6" color="blue-gray" fullWidth onClick={ handleUpdate }>
+            Update
           </Button>
         </form>
       </Card>
@@ -91,4 +93,4 @@ const AnnouncementForm = () => {
  );
 };
 
-export default AnnouncementForm;
+export default AnnouncementEdit;
