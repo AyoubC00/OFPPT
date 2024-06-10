@@ -11,6 +11,7 @@ import {
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+// import Editor from "../../components/Editor/Editor";
 
 const AnnouncementForm = () => {
 
@@ -56,14 +57,14 @@ const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
-            <Textarea placeholder="description de l'annonce"  
+            {/* <Textarea placeholder="description de l'annonce"  
               name="description"
               value={ announcement.description }
               onChange={ handleChange }
               className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
-              }}/>
+              }}/> */}
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
