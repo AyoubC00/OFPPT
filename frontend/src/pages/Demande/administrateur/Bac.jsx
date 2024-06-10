@@ -1,12 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { fetchDemands } from '../../../features/demandes/DemandesSlice';
+import { fetchDemands, updateDemandStatus } from '../../../features/demandes/DemandesSlice'
+import { useNavigate } from 'react-router-dom';
 import { RiSearchLine } from 'react-icons/ri';
 
 const Bac = () => {
   const dispatch = useDispatch();
   const { demands, loading, error } = useSelector((state) => state.demand);
-
+   const navigate = useNavigate();
   const [filterType, setFilterType] = useState('');
   const [filterDate, setFilterDate] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,6 +16,10 @@ const Bac = () => {
     dispatch(fetchDemands());
   }, [dispatch]);
 
+   const handleReturn = (id) => {
+        dispatch(updateDemandStatus({ id, status: 'Returned' }));
+         navigate('/dashboard/demandes/historique')
+      };
   const resetFilters = () => {
     setFilterType('');
     setFilterDate('');
@@ -98,6 +103,7 @@ if (loading) return (
             <th className="border px-4 py-2">CEF</th>
             <th className="border px-4 py-2">Type</th>
             <th className="border px-4 py-2">Status</th>
+            <th className="border px-4 py-2">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -108,6 +114,7 @@ if (loading) return (
               <td className="border px-4 py-2">{demand.stagiaire?.cef}</td>
               <td className="border px-4 py-2">{demand.type}</td>
               <td className="border px-4 py-2">{demand.status}</td>
+              <td className="border px-4 py-2"><button onClick={() => handleReturn(demand.id)} className="border bg-blue-gray-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2">Return</button></td>
             </tr>
           ))}
         </tbody>
