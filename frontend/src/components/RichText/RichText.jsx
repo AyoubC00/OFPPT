@@ -1,7 +1,6 @@
 import { LexicalComposer } from "@lexical/react/LexicalComposer"
 import { ContentEditable } from "@lexical/react/LexicalContentEditable"
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin"
-import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin"
 
 function RichText() {
     const config = {
@@ -21,7 +20,6 @@ function RichText() {
                         contentEditable={ <ContentEditable className="editor-input"/> }
                         placeholder={ <Placeholder /> }
                     />
-                    {/* <AutoFocusPlugin /> */}
                 </div>
             </div>
         </LexicalComposer>

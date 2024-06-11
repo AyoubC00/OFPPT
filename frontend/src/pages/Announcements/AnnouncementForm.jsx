@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
  Card,
@@ -53,7 +52,7 @@ export const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
-            <RichText />
+            {/* <RichText /> */}
             {/* <Textarea placeholder="description de l'annonce"  
               name="description"
               value={ announcement.description }
