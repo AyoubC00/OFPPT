@@ -21,9 +21,9 @@ const Sidebar = () => {
   }
   
   return (
-    <div className="flex flex-col fixed h-full ps-9 pe-10 py-8 gap-3 shadow-md bg-blue-gray-500">
+    <div className="flex flex-col fixed h-full py-8 shadow-md">
 
-        <NavLink to="/" className="whitespace-pre">
+        <NavLink to="/" className="whitespace-pre px-9 py-2 hover:bg-red-500">
           <IconButton variant='text' className="me-2 w-8 h-8 rounded-md">
             { ICONS.home }
           </IconButton>
@@ -32,7 +32,7 @@ const Sidebar = () => {
 
         {
           dashboardRoutes.map(route =>
-            <NavLink to={`${ route.path }`} key={ route.path } className="whitespace-pre">
+            <NavLink to={`${ route.path }`} key={ route.path } className="whitespace-pre px-9 py-2 hover:bg-red-500">
               <IconButton variant='text' className="me-2 w-8 h-8 rounded-md">
                 { ICONS[route.path.split("/").pop()] }
               </IconButton>
@@ -41,7 +41,7 @@ const Sidebar = () => {
           )
         }
 
-        <Button variant="text" size="lg" color="red" onClick={ logout } className="w-fit p-1.5 font-semibold mt-auto">
+        <Button variant="text" size="lg" color="red" onClick={ logout } className="w-fit p-1.5 font-semibold mx-auto mt-auto">
             <ArrowUpOnSquareIcon className="h-7 w-7 rotate-90 inline-block me-2"/>
             Déconnecter
         </Button>

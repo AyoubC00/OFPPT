@@ -7,9 +7,12 @@ import NoResult from "../NoResult"
 import { Typography } from "@material-tailwind/react"
 import usePaginatedPage from "../../hooks/usePaginatedPage"
 import { fetchAnnouncements } from "../../features/announcements/AnnouncementsSlice"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import AnnouncementModal from "../AnnouncementModal/AnnouncementModal"
 
 const Announcements = () => {
+    const [open, setOpen] = useState(false)
+    const [announcement, setAnnouncement] = useState(null)
     const { all, pinned } = useSelector(state => state.announcements)
     const dispatch = useDispatch()
     const paginatedPage = usePaginatedPage(all)
@@ -18,9 +21,20 @@ const Announcements = () => {
     useEffect( () => {
         dispatch(fetchAnnouncements())
     }, [])
-    
+
+    const modalHandler = () =>
+    {
+        setOpen(prev => !prev)
+    }
+
+    const handleShow = (announcement) =>
+    {
+        modalHandler()
+        setAnnouncement(announcement)
+    }
     return (
         <div className="container min-w-full bg-gray-50 text-blue-gray-900 py-10">
+            <AnnouncementModal open={ open } handler={ modalHandler } handleShow={ handleShow } announcement={ announcement }/>
             <Typography variant="small" className="text-3xl px-4 mb-8 sm:px-16 md:w-3/4 md:mx-auto md:px-4">
                 Announcements
             </Typography>
@@ -31,7 +45,7 @@ const Announcements = () => {
                     {
                         pinned.length ?
                         pinned.map(announcement => 
-                            <PinnedAnnouncement key={ announcement.id } { ...announcement }/>    
+                            <PinnedAnnouncement key={ announcement.id } announcement={ announcement } handleShow={ handleShow }/>    
                         ) :
                         <NoResult />
                     }
@@ -44,7 +58,7 @@ const Announcements = () => {
                         {
                             announcements.length ?
                             announcements.map(announcement => 
-                                <Announcement key={ announcement.id } { ...announcement }/>    
+                                <Announcement key={ announcement.id } announcement={ announcement } handleShow={ handleShow }/>    
                             ) :
                             <NoResult /> 
                         }
