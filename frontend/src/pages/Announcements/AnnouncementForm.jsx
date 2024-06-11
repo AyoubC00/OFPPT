@@ -9,17 +9,15 @@ import {
 } from "@material-tailwind/react";
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 // import Editor from "../../components/Editor/Editor";
-=======
 import RichText from "../../components/RichText/RichText";
->>>>>>> origin/final_home
+
 
 const AnnouncementForm = () => {
 
   const navigate = useNavigate();
-  const [announcement, setAnnouncement] = useState({ title: '', description: '', displayDate: '', pinned: false });
+  const [announcement, setAnnouncement] = useState({ title: '', description: '', pinned: false });
   const { user } = useAuthContext();
   const handleChange = ({ target: { name, value } }) => 
   {
@@ -30,7 +28,6 @@ const AnnouncementForm = () => {
   const handleCreate = async () =>
   {
     const response = await request("announcements", "POST", announcement);
-    console.log(response);
     navigate(-1);
   }
 
@@ -60,33 +57,14 @@ const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
-<<<<<<< HEAD
-=======
-            {/* <RichText /> */}
->>>>>>> origin/final_home
-            {/* <Textarea placeholder="description de l'annonce"  
+            <Textarea placeholder="description de l'annonce"  
               name="description"
               value={ announcement.description }
               onChange={ handleChange }
               className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
-              }}/> */}
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Date d'affichage
-            </Typography>
-            <Input
-              name="displayDate"
-              value={ announcement.displayDate }
-              onChange={ handleChange }
-              type="date"
-              size="lg"
-              placeholder="10/01/2024"
-              className=" !border-blue-gray-200"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
+              }}/>
             <Switch label="Pin" name="pinned" value='' checked={ announcement.pinned ? true : false } onChange={ handleChange } className="text-blue-gray-500"/>
           </div>
           <Button className="mt-6" color="blue-gray" fullWidth onClick={ handleCreate }>

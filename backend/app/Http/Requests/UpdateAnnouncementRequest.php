@@ -26,8 +26,7 @@ class UpdateAnnouncementRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'pinned' => ['required', 'boolean'],
-            'displayDate' => ['required', 'date']
+            'pinned' => ['required', 'boolean']
         ];
     }
 }

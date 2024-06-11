@@ -19,7 +19,7 @@ const AnnouncementEdit = () => {
   const { announcementId } = useParams();
   const announcements = useSelector(state => state.announcements);
   const { title, description, pinned } = announcements.all.filter(ann => ann.id === parseInt(announcementId))[0];
-  const [announcement, setAnnouncement] = useState({ title: title, description: description, displayDate: "", pinned: pinned });
+  const [announcement, setAnnouncement] = useState({ title: title, description: description, pinned: pinned });
   const { user } = useAuthContext();
   const handleChange = ({ target: { name, value } }) => 
   {
@@ -38,7 +38,7 @@ const AnnouncementEdit = () => {
       <Button color="blue-gray" onClick={()=>navigate(-1)} className="self-start">Back</Button>
       <Card color="transparent" shadow={false} className="sm:w-full max-w-lg">
         <Typography variant="h4" color="blue-gray" className="text-center mb-4">
-          Ajouter un announcement
+          Mettre à jour l'annoncement
         </Typography>
         <form className="mt-8 mb-2 w-full max-w-lg">
           <div className="mb-1 flex flex-col gap-6">
@@ -67,21 +67,6 @@ const AnnouncementEdit = () => {
               labelProps={{
                 className: "before:content-none after:content-none",
               }}/>
-            <Typography variant="h6" color="blue-gray" className="-mb-3">
-              Date d'affichage
-            </Typography>
-            <Input
-              name="displayDate"
-              value={ announcement.displayDate }
-              onChange={ handleChange }
-              type="date"
-              size="lg"
-              placeholder="10/01/2024"
-              className=" !border-blue-gray-200"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
             <Switch label="Pin" name="pinned" value='' checked={ announcement.pinned ? true : false } onChange={ handleChange } className="text-blue-gray-500"/>
           </div>
           <Button className="mt-6" color="blue-gray" fullWidth onClick={ handleUpdate }>
