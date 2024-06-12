@@ -21,9 +21,9 @@ class absencesFactory extends Factory
      */
     public function definition(): array
     {
-        $Pivot = fake()->randomElement(Abspivot::all())->first();
+        $Pivot = fake()->randomElement(Abspivot::all());
         // $student = Stagiaire::where('groupe_id', $Pivot->groupe_id)->inRandomOrder()->first();
-        $student = fake()->randomElement(Stagiaire::all())->first();
+        $student = fake()->randomElement(Stagiaire::all());
 
         // $stagiaire_id = $student ? $student->cef : 'ADVAI544';
         return [

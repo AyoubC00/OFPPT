@@ -69,11 +69,11 @@ class AbsenceController extends Controller
                 DB::raw("CONCAT(CONCAT(UPPER(SUBSTRING(users.nom,1,1))),LOWER(SUBSTRING(users.nom,2))
             ,' ',CONCAT(UPPER(SUBSTRING(users.prenom,1,1)),LOWER(SUBSTRING(users.prenom,2)))) AS nomComplete"),
             )->join('users', 'stagiaire.user_id', '=', 'users.id')
-                ->where('stagiaire.groupe_id', $Group_id);
+                ->where('stagiaire.groupe_id', $Group_id)->get();
             /*
                 Get students were absent
             */
-            $Absent_Stagiaire = Absences::where('abspivots_id', $validate['id']);
+            $Absent_Stagiaire = Absences::where('abspivots_id', $validate['id'])->get();
             return response()->json(compact("StagiaireByGroup", "Absent_Stagiaire", "Group_id"));
         } catch (Exception $e) {
             return response()->json(['message' => 'internal server error'], 500);
@@ -89,8 +89,8 @@ class AbsenceController extends Controller
                 // groupe Id
                 'id' => 'required'
             ]);
-            $Stagiaires = Stagiaire::where('groupe_id', $validate['id']);
-            return response()->json($Stagiaires);
+            $Str = Stagiaire::where('groupe_id', $validate['id'])->get();
+            return response()->json(compact('Str'));
         } catch (Exception $e) {
             return response()->json(['message' => 'internal server error'], 500);
         }
@@ -155,9 +155,10 @@ class AbsenceController extends Controller
                 'date' => $DateNow,
                 'groupe_id' => $validate['groupe_id'],
                 'matricule' => $validate['matricule'],
-                'heure_debut' => $validate['date_debut'],
-                'heure_find' => $validate['date_find']
+                'heure_debut' => $validate['heure_debut'],
+                'heure_fin' => $validate['heure_fin']
             ]);
+            // Optionally create Absences records if stagiaires are provided
             if (isset($request->stagiaires)) {
                 foreach ($request->stagiaires as $stagiaireId) {
                     $Absent = Absences::create([
