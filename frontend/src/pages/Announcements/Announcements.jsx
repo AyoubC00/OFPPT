@@ -17,17 +17,23 @@ import {
  } from "react-icons/bs"
  import { useEffect } from "react"
 
-const ANNOUNCEMENTS_PER_PAGE = 5
+const ANNOUNCEMENTS_PER_PAGE = 2
 
 const Announcements = () => {
     const dispatch = useDispatch()
+    const { current_page } = useSelector(state => state.announcements.config)
     const paginatedPage = usePaginatedPage(ANNOUNCEMENTS_PER_PAGE)
     let announcements = paginatedPage()
-
+    
     const deleteHandler = async(id, pinned) => {
         const data = await request(`announcements/${id}`, "DELETE");  
         if(data.ok) dispatch(removeAnnouncement({id, isPinned : pinned}));
+        if (announcements.length <= ANNOUNCEMENTS_PER_PAGE) dispatch(previousPage())
     }
+
+    useEffect( () => {
+        announcements = paginatedPage()
+    }, [current_page])
     
     useEffect( () => {
         dispatch(targetPage(1))
