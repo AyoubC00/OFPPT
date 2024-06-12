@@ -15,7 +15,7 @@ const Announcements = () => {
     const [announcement, setAnnouncement] = useState(null)
     const { all, pinned } = useSelector(state => state.announcements)
     const dispatch = useDispatch()
-    const paginatedPage = usePaginatedPage(all)
+    const paginatedPage = usePaginatedPage(3)
     const announcements = paginatedPage()
 
     useEffect( () => {
@@ -51,7 +51,7 @@ const Announcements = () => {
                     }
                 </div>
                 <div className="row-start-1 row-end-1 col-start-3 col-end-6 mb-2">
-                    <Pagination />
+                    <Pagination maxAnnouncements={3} />
                 </div>
                 <div className="col-span-3 row-start-2 row-end-3">
                     <div className="flex flex-col gap-2">
