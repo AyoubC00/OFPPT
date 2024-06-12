@@ -9,7 +9,6 @@ import {
 } from "@material-tailwind/react";
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
-import RichText from "../../components/RichText/RichText";
 
 export const AnnouncementForm = () => {
 
@@ -52,15 +51,14 @@ export const AnnouncementForm = () => {
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Sujet d'annonce
             </Typography>
-            {/* <RichText /> */}
-            {/* <Textarea placeholder="description de l'annonce"  
+            <Textarea placeholder="description de l'annonce"  
               name="description"
               value={ announcement.description }
               onChange={ handleChange }
               className=" !border-blue-gray-200"
               labelProps={{
                 className: "before:content-none after:content-none",
-              }}/> */}
+            }}/>
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Date d'affichage
             </Typography>
