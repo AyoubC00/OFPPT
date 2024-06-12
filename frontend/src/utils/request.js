@@ -14,7 +14,8 @@ const request = async (endpoint, method="GET", body=null) =>
         body: body ? JSON.stringify(body) : null
     })
 
-    return await response.json()
+    const data = {ok : response.ok, ...await response.json()};
+    return data;
 }
 
 export default request
