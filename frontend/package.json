@@ -17,6 +17,7 @@
     "react-router-dom": "^6.22.2",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
+    "tw-elements-react": "^1.0.0-alpha-end",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {

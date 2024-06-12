@@ -56,49 +56,74 @@ const Bac = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-semibold  my-8">Bac - Waiting Return</h1>
-      <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-        <div className="flex items-center justify-end mt-4 md:mt-0">
-          <div className="relative">
-            <input
-              id="searchQuery"
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by name"
-              className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-emerald-600 focus:border-emerald-600 sm:text-sm pl-10"
-            />
-            <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <RiSearchLine className="h-5 w-5 text-gray-500" />
-            </span>
-          </div>
+         <div className="mb-4">
+        <div className="relative">
+          <input
+            id="searchQuery"
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search by name"
+            className="border rounded-md px-2 py-1 pl-10 pr-3 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+          />
+          <RiSearchLine className="absolute h-5 w-5 text-gray-500 top-1/2 transform -translate-y-1/2 left-3" />
         </div>
       </div>
-      <table className="w-full border-collapse border">
-        <thead>
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-200">
           <tr>
-            <th className="border px-4 py-2">ID</th>
-            <th className="border px-4 py-2">Stagiaire</th>
-            <th className="border px-4 py-2">CEF</th>
-            <th className="border px-4 py-2">Type</th>
-            <th className="border px-4 py-2">Status</th>
-            <th className="border px-4 py-2">Action</th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              ID
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Stagiaire
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              CEF
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Type
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Status
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Action
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white divide-y divide-gray-200">
           {filteredDemands.map((demand) => (
             <tr key={demand.id}>
-              <td className="border px-4 py-2">{demand.id}</td>
-              <td className="border px-4 py-2">
+              <td className="px-6 py-4 whitespace-nowrap">{demand.id}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
                 {demand.stagiaire?.user?.nom} {demand.stagiaire?.user?.prenom}
               </td>
-              <td className="border px-4 py-2">{demand.stagiaire?.cef}</td>
-              <td className="border px-4 py-2">{demand.type}</td>
-              <td className="border px-4 py-2">{demand.status}</td>
-              <td className="border px-4 py-2">
+              <td className="px-6 py-4 whitespace-nowrap">{demand.stagiaire?.cef}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{demand.type}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{demand.status}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
                 <button
                   onClick={() => handleReturn(demand.id)}
-                  className="border bg-blue-gray-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2"
+                  className="border bg-blue-gray-500 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   Return
                 </button>
