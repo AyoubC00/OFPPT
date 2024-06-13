@@ -10,9 +10,6 @@ import {
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
-// import Editor from "../../components/Editor/Editor";
-import RichText from "../../components/RichText/RichText";
-
 
 const AnnouncementForm = () => {
 
