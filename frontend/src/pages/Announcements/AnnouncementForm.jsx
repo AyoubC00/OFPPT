@@ -10,6 +10,7 @@ import {
 import request from "../../utils/request";
 import { useAuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+import { BsChevronLeft } from "react-icons/bs";
 
 const AnnouncementForm = () => {
 
@@ -30,7 +31,7 @@ const AnnouncementForm = () => {
 
  return (
     <div className="flex flex-col items-center justify-center min-h-screen space-y-8">
-      <Button color="blue-gray" onClick={()=>navigate(-1)} className="self-start">Back</Button>
+      <Button color="blue-gray" variant="text" onClick={()=>navigate(-1)} className="self-start ms-4"><BsChevronLeft size={24} /></Button>
       <Card color="transparent" shadow={false} className="sm:w-full max-w-lg">
         <Typography variant="h4" color="blue-gray" className="text-center mb-4">
           Ajouter un announcement

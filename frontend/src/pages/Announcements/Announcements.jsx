@@ -17,7 +17,7 @@ import {
  } from "react-icons/bs"
  import { useEffect } from "react"
 
-const ANNOUNCEMENTS_PER_PAGE = 2
+const ANNOUNCEMENTS_PER_PAGE = 4
 
 const Announcements = () => {
     const dispatch = useDispatch()
