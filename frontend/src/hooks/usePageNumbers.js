@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux"
 
-const usePageNumbers = () =>
+const usePageNumbers = (maxAnnouncements) =>
 {
   const announcementsCount = useSelector(state => state.announcements.all.length);
-  const maxAnnouncements = useSelector(state => state.announcements.config.maxAnnouncements);
   const numberOfPages = Math.ceil(announcementsCount / maxAnnouncements);
   // console.table([
   //   ["Announcements cout", announcementsCount], 

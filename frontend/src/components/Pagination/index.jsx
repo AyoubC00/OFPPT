@@ -4,12 +4,12 @@ import { nextPage, previousPage, targetPage } from "../../features/announcements
 import { useDispatch, useSelector } from "react-redux"
 import usePageNumbers from "../../hooks/usePageNumbers"
 
-export function Pagination() {
+export function Pagination({ maxAnnouncements }) {
 
-  const { all, config : { maxAnnouncements, currentPage } } = useSelector(state => state.announcements)
+  const { all, config : { currentPage } } = useSelector(state => state.announcements)
   const dispatch = useDispatch()
   // Get the numbers corresponding to the paginated pages
-  const pages = usePageNumbers()
+  const pages = usePageNumbers(maxAnnouncements)
 
   const getItemProps = (index) =>
     ({

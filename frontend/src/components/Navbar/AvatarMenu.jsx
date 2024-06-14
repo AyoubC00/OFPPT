@@ -6,12 +6,12 @@ import LogoutButton from "../LogoutButton";
 
 const AvatarMenu = ({ className: classes }) =>
 {
-  const { logout } = useAuthContext();
-
+  const { user } = useAuthContext();
+  const { nom, prenom } = user.user
   return (
     <Menu>
-      <MenuHandler className={ `ms-auto ${ classes } hover:cursor-pointer` }>
-        <Avatar src="https://docs.material-tailwind.com/img/face-2.jpg" alt="Profile image" className="ms-auto w-10 h-10"/>
+      <MenuHandler className={ `ms-auto ${ classes } hover:cursor-pointer w-[48px] h-[48px] rounded-full bg-blue-gray-100 text-center py-2.5` }>
+        <Typography>{`${prenom[0]}${nom[0]}`}</Typography>
       </MenuHandler>
       <MenuList>
         <MenuItem>

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux"
 
-const usePaginatedPage = () =>
+const usePaginatedPage = (maxAnnouncements) =>
 {
     const announcements = useSelector(({ announcements }) => announcements.all);
-    const { currentPage, maxAnnouncements } = useSelector(
+    const { currentPage } = useSelector(
         ({ announcements: { config } }) => config
     );
     
