@@ -65,6 +65,7 @@ const dashboardRoutes = [
         element: <h1>Emploi de temps</h1>,
     }
 ]
+
 const router = createBrowserRouter([
     {
         path: "/",
